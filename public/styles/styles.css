@@ -1,0 +1,61 @@
+.main {
+  /* height: 100vh; */
+  /* width: 100vw; */
+  margin: auto;
+}
+body{
+  min-height: 100%;
+}
+.container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 10% 25% 25% 40%;
+    grid-template-areas: 
+        "header header header header"
+        "map image image social"
+        "leaderBoard image image health"
+        "description description choices choices"
+    ;
+    grid-gap: 5px;
+    background-color: pink;
+    padding: 5px;
+    justify-items: center; /*or stretch to fill the area
+    /* justify-content: center;  */
+    height: 100vh;
+    width: 100vw;
+    border: 2px solid black;
+}
+
+.container > div {
+  background-color: green;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.grid__header {
+  grid-area: header;
+}
+.grid__map {
+  grid-area: map;
+}
+.grid__leaderBoard {
+  grid-area: leaderBoard;
+}
+.grid__social {
+  grid-area: social;
+}
+.grid__health {
+  grid-area: health;
+}
+.grid__image {
+  grid-area: image;
+}
+.grid__description {
+  grid-area: description;
+}
+.grid__choices {
+  grid-area: choices;
+}
