@@ -1,8 +1,3 @@
-.main {
-  /* height: 100vh; */
-  /* width: 100vw; */
-  /* margin: auto; */
-}
 body, html{
   /* min-height: 100%; */
   margin: 0;
@@ -68,5 +63,21 @@ body, html{
 .grid__data {
   width: 100%;
   height: 100%;
+  background-color: blue;
+}
+
+img{
+  max-width: 100%;
+}
+
+.progress {
+  margin-top: 30px;
+}
+
+#progress__social, #progress__health {
+  height: 50px;
+}
+
+#progress-bar__social, #progress-bar__health{
   background-color: blue;
 }
