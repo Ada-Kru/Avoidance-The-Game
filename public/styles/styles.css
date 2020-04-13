@@ -1,0 +1,83 @@
+body, html{
+  /* min-height: 100%; */
+  margin: 0;
+  height: 100%;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 60px 200px 200px auto;
+    grid-template-areas: 
+        "header header header header"
+        "map image image social"
+        "leaderBoard image image health"
+        "description description choices choices"
+    ;
+    grid-gap: 5px;
+    /* grid-column-gap: 5px; */
+    background-color: white;
+    /* padding: 5px; */
+    justify-items: center; /*or stretch to fill the area
+    /* justify-content: center;  */
+    /* height: 100vh; */
+    /* width: 100vw; */
+    /* border: 2px solid black; */
+    height: 100%;
+}
+
+.container > div {
+  background-color: grey;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+  border: 1px solid black;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.grid__header {
+  grid-area: header;
+}
+.grid__map {
+  grid-area: map;
+}
+.grid__leaderBoard {
+  grid-area: leaderBoard;
+}
+.grid__social {
+  grid-area: social;
+}
+.grid__health {
+  grid-area: health;
+}
+.grid__image {
+  grid-area: image;
+}
+.grid__description {
+  grid-area: description;
+}
+.grid__choices {
+  grid-area: choices;
+}
+
+.grid__data {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
+
+img{
+  max-width: 100%;
+}
+
+.progress {
+  margin-top: 30px;
+}
+
+#progress__social, #progress__health {
+  height: 50px;
+}
+
+#progress-bar__social, #progress-bar__health{
+  background-color: blue;
+}
