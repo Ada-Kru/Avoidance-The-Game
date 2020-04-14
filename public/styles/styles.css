@@ -1,7 +1,12 @@
+/* main containers */
 body, html{
   /* min-height: 100%; */
   margin: 0;
   height: 100%;
+}
+.main{
+  background-color: #001a00;
+  height: 100vh;
 }
 .container {
     display: grid;
@@ -14,22 +19,18 @@ body, html{
         "description description choices choices"
     ;
     grid-gap: 5px;
-    /* grid-column-gap: 5px; */
-    background-color: white;
-    /* padding: 5px; */
+    background-color: #001a00;
     justify-items: center; /*or stretch to fill the area
     /* justify-content: center;  */
-    /* height: 100vh; */
-    /* width: 100vw; */
-    /* border: 2px solid black; */
     height: 100%;
 }
 
+/* grids */
 .container > div {
-  background-color: grey;
+  background-color: #ffbb80;
   text-align: center;
   padding: 10px;
-  font-size: 30px;
+  font-size: 20px;
   border: 1px solid black;
   width: 100%;
   box-sizing: border-box;
@@ -37,6 +38,9 @@ body, html{
 
 .grid__header {
   grid-area: header;
+}
+.grid__menu {
+  grid-area: menu;
 }
 .grid__map {
   grid-area: map;
@@ -60,16 +64,27 @@ body, html{
   grid-area: choices;
 }
 
-.grid__data {
-  width: 100%;
+/* .grid__data { */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-color: #c97b36; */
+/* } */
+
+
+/* images */
+#image__main{
+  display: flex;
   height: 100%;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 img{
-  max-width: 100%;
+  object-fit: contain;
+  width: 100%;
+  /* max-width: 100%; */
 }
 
+/* bars and buttons */
 .progress {
   margin-top: 30px;
 }
@@ -79,5 +94,32 @@ img{
 }
 
 #progress-bar__social, #progress-bar__health{
-  background-color: blue;
+  background-color: #e66b00;
+}
+
+.grid__choices > .btn__choice {
+  background-color: #e66b00;
+  font-size: 16px;
+  text-align: left;
+}
+
+
+/* fonts */
+h1{
+  font-size: 50px;
+  text-align: left;
+  font-family: 'Girassol', cursive;
+  float: left;
+}
+
+.grid__description > p{
+  font-size: 16px;
+  text-align: left;
+}
+
+.fas {
+  color: #e66b00;
+}
+.icon__home{
+  float: right;
 }

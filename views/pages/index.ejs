@@ -3,14 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Avoidance - the Game</title>
-    <link rel="stylesheet" href="public/stylesheets/styles.css">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/flatly/bootstrap.min.css"/> -->
+    <link 
+    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+    rel="stylesheet"  type='text/css'>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="public/styles/reset.css">
+    <link rel="stylesheet" href="public/styles/styles.css">    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
 
   <body>
-    <!-- <div class="main"> -->
+    <div class="main">
       <div class="container">
-        <div class="grid__header">Avoidance: The Game</div>
+        <div class="grid__header">
+          <h1>Avoidance: The Game</h1>
+          <a class="icon__home" href="/"><span class="fas fa fa-home"></span></a> 
+        </div>
+
         <div class="grid__map">Map</div>
         <div class="grid__leaderBoard">Leader Board</div>
 
@@ -26,13 +42,22 @@
           </div>
         </div>
         
-        <div class="grid__image">Image here
-          <!-- <img src="public/images/street.jpg"> -->
+        <div class="grid__image">
+          <div id="image__main">
+            <img src="public/images/street.jpg">
+          </div>
         </div>
-        <div class="grid__description">Description here</div>
-        <div class="grid__choices">Choices</div>
+
+        <div class="grid__description">What's going on?
+          <p id="description">Who’s that? It’s grandma! Hello! she calls out to you. What do you do?</p>
+        </div>
+        <div class="grid__choices">What do you do?
+          <button id="choice1" type="button" class="btn btn__choice btn-lg btn-block">Turn off on a side street.</button>
+          <button id="choice2" type="button" class="btn btn__choice btn-lg btn-block">Smile, wave and walk faster.</button>
+          <button id="choice3" type="button" class="btn btn__choice btn-lg btn-block">Give her a quick hug, explain (again) what’s going on and how important social distancing is.</button>
+        </div>
       </div>
-    <!-- </div> -->
+    </div>
 
     <!-- Ryan will do: 
         - landing page
@@ -57,7 +82,13 @@
     <!--  -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script
+  type="text/javascript"
+  src="https://use.fontawesome.com/releases/v5.13.0/js/conflict-detection.js">
+</script>
+
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
     <script src="public/scripts/storyBoard.js"></script>
     <script src="public/scripts/gamePlay.js"></script>
   </body>
