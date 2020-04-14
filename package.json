@@ -1,8 +1,7 @@
 {
   "name": "Avoidance the Game",
   "version": "0.1.0",
-  "description": "A game where you attempt to go about your daily life
-  while avoiding contact with other people.",
+  "description": "A game where you attempt to go about your daily life  while avoiding contact with other people.",
   "engines": {
     "node": "12.x"
   },
