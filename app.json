@@ -1,0 +1,7 @@
+{
+  "name": "Avoidance the Game",
+  "description": "A game where you attempt to go about your daily life while avoiding contact with other people.",
+  "repository": "https://github.com/Ada-Kru/Avoidance-The-Game",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
