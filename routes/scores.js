@@ -115,7 +115,7 @@ router.post("/newuser", async (req, res) => {
                  VALUES ($1, $2, $3)`,
         [name, characterType, secretKey]
       );
-      output.secretKey = secretKey;
+      output.secret_key = secretKey;
     }
   }
 
