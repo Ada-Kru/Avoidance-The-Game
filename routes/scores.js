@@ -11,10 +11,12 @@ const NAME_LENGTH_MSG =
   "Invalid username.  Names must be between 1 and 32 " + "characters long.";
 const NAME_IN_USE_MSG = "This username is already in use!.";
 const CHAR_TYPE_INVALID_MSG = "Invalid character type entered.";
+const MAX_POSSIBLE_SCORE = 10000;
 const TOTAL_CHARACTER_TYPES = 3;
 const CHAR_TYPE_RANGE_MSG = `Value of characterType must be within 0 - ${
   TOTAL_CHARACTER_TYPES - 1
 }`;
+const SCORE_RANGE_MSG = `Valid score range is from -1 to ${MAX_POSSIBLE_SCORE}`;
 
 // GET request for getting a single user's score.
 router.get("/", async (req, res) => {
@@ -32,6 +34,15 @@ router.get("/", async (req, res) => {
 // POST request for setting a user's score.
 router.post("/", async (req, res) => {
   const { totalScore, healthScore, socialScore, secretKey } = req.body;
+  let output = { error: null };
+  for (let score of [totalScore, healthScore, socialScore]) {
+    score = parseInt(score);
+    if (score.isNaN || score < 0 || score > TOTAL_CHARACTER_TYPES - 1) {
+      output.error = SCORE_RANGE_MSG;
+      res.send(output);
+      return;
+    }
+  }
   const { rows } = await db.query(
     `UPDATE scores
      SET total_score = $1,
@@ -40,7 +51,8 @@ router.post("/", async (req, res) => {
      WHERE secret_key = $4`,
     [totalScore, healthScore, socialScore, secretKey]
   );
-  res.send();
+
+  res.send(output);
 });
 
 // // GET request for getting a the top 10 scores.
@@ -61,7 +73,7 @@ router.get("/topscores", async (req, res) => {
 // client and is is required to be sent when updating their score.
 router.post("/newuser", async (req, res) => {
   let { name, characterType } = req.body;
-  let errors = { error: null };
+  let output = { error: null };
 
   name = name.trim();
   try {
@@ -74,15 +86,15 @@ router.post("/newuser", async (req, res) => {
       throw CHAR_TYPE_RANGE_MSG;
     }
   } catch (err) {
-    errors.error = CHAR_TYPE_RANGE_MSG;
-    res.send(errors);
+    output.error = CHAR_TYPE_RANGE_MSG;
+    res.send(output);
     return;
   }
 
   if (name.length > 32 || name.length == 0) {
-    errors.error = NAME_LENGTH_MSG;
+    output.error = NAME_LENGTH_MSG;
   } else if (/[^a-z0-9 ]/i.test(name)) {
-    errors.error = NAME_INVALID_MSG;
+    output.error = NAME_INVALID_MSG;
   } else {
     const existingUser = await db.query(
       `SELECT 1 FROM scores
@@ -90,7 +102,7 @@ router.post("/newuser", async (req, res) => {
       [name]
     );
     if (existingUser.rows.length) {
-      errors.error = NAME_IN_USE_MSG;
+      output.error = NAME_IN_USE_MSG;
     } else {
       // Create a new user if the username was valid.  All score columns
       // for this user will be set to -1 by default to indicate that the
@@ -101,11 +113,11 @@ router.post("/newuser", async (req, res) => {
                  VALUES ($1, $2, $3)`,
         [name, characterType, secretKey]
       );
-      errors.secretKey = secretKey;
+      output.secretKey = secretKey;
     }
   }
 
-  res.send(errors);
+  res.send(output);
 });
 
 module.exports = router;
