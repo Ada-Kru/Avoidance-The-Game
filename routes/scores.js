@@ -5,7 +5,7 @@ var uuid = require('uuid');
 const router = new Router();
 
 const NAME_INVALID_MSG =
-"Invalid username.  Names are only allowed to be letters, numbers, and spaces.";
+"Invalid username.  Names are only allowed to contain letters, numbers, and spaces.";
 const NAME_LENGTH_MSG =
 "Invalid username.  Names must be between 1 and 32 characters long.";
 
@@ -47,7 +47,8 @@ router.get('/topscores', async (req, res) => {
 // secret key and add an entry into the table.  The key is returned to the
 // client and is is required to be sent when updating their score.
 router.post('/newuser', async (req, res) => {
-    const { name } = req.body;
+    let { name } = req.body;
+    name = name.trim();
     let errors = { error: null };
 
     if (name.length > 32 || name.length == 0) {
@@ -57,17 +58,19 @@ router.post('/newuser', async (req, res) => {
         errors.error = NAME_INVALID_MSG;
     }
     else {
-        const { rows } = await db.query(`SELECT points FROM scores
-                                         WHERE name = $1
-                                         LIMIT 1`, [name]);
-        if (rows.length) {
+        const existingUser = await db.query(`SELECT 1 FROM scores
+                                             WHERE name = $1`, [name]);
+        if (existingUser.rows.length) {
             errors.error = "This username is already in use!.";
         }
         else {
+            // Create a new user if the username was valid.  All score columns
+            // for this user will be set to -1 by default to indicate that the
+            // user has no score recorded yet.
             let secretKey = uuid.v4();
             const { rows } = await db.query(
-                `INSERT INTO scores (name, points, secret_key)
-                 VALUES ($1, -1, $2)`, [name, secretKey]);
+                `INSERT INTO scores (name, secret_key)
+                 VALUES ($1, $2)`, [name, secretKey]);
             errors.secretKey = secretKey;
         }
     }
@@ -80,15 +83,17 @@ router.post('/newuser', async (req, res) => {
 module.exports = router;
 
 // Create database
-// let sql = "CREATE DATABASE IF NOT EXISTS Avoidance";
-// let sql = `CREATE TABLE scores(
-//                                id SERIAL PRIMARY KEY,
-//                                name VARCHAR(32),
-//                                points INT,
-//                                created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-//                                secret_key CHAR(36)
-//                               )`;
-
+/*
+CREATE TABLE scores(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(32) NOT NULL,
+    total_score INT NOT NULL DEFAULT -1,
+    health_score INT NOT NULL DEFAULT -1,
+    social_score INT NOT NULL DEFAULT -1,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    secret_key CHAR(36)
+);
+*/
 
 // Prune oldest scores
 // let sql = `DELETE FROM scores
