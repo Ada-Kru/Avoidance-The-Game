@@ -1,3 +1,5 @@
+// /scores endpoint for updating user score information
+
 const Router = require("express-promise-router");
 const db = require("../db");
 var uuid = require("uuid");
