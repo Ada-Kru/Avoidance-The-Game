@@ -27,15 +27,21 @@ body, html{
     border: 1px solid black;
     width: 100%;
     box-sizing: border-box;
+    margin: 20px 0px;
 }
 
 
 #lp_container > div:nth-child(1) {
     height: 10%;
+    margin: 0px;
+    position: relative;
+    top: 20px;
 }
 
 #lp_container > div:nth-child(2) {
     height: 20%;
+    position: relative;
+    top: 20px;
 }
 
 #lp_container > form {
@@ -46,6 +52,10 @@ body, html{
     border: 1px solid black;
     width: 100%;
     box-sizing: border-box;
+    margin: 20px 0px;
+    position: relative;
+    top: 20px;
+    height: 50%;
 }
 
 .title__div > h1 {
@@ -54,6 +64,28 @@ body, html{
     font-family: 'Girassol', cursive;
     float: none;
 }
+
+#username{
+  width: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#lp_form > button {
+  background-color: #e66b00;
+  font-size: 16px;
+  text-align: left;
+}
+
+#lp_form > div {
+  margin-bottom: 2rem;
+}
+
+#nurse-pts, #teacher-pts, #librarian-pts{
+  font-size: 70%;
+}
+
 
 .container {
     display: grid;
