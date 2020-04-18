@@ -8,6 +8,53 @@ body, html{
   background-color: #001a00;
   height: 100vh;
 }
+
+#lp_container {
+    max-width: 720px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+}
+
+#lp_container > div {
+    background-color: #ffbb80;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+#lp_container > div:nth-child(1) {
+    height: 10%;
+}
+
+#lp_container > div:nth-child(2) {
+    height: 20%;
+}
+
+#lp_container > form {
+    background-color: #ffbb80;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.title__div > h1 {
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Girassol', cursive;
+    float: none;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
