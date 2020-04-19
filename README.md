@@ -2,7 +2,7 @@
 A game where you attempt to go about your daily life while avoiding contact with
 other people.
 
-## File Hierarchy 
+## File Hierarchy
 
 #### Procfile
 
