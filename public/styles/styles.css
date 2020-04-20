@@ -2,11 +2,14 @@
 body, html{
   /* min-height: 100%; */
   margin: 0;
-  height: 100%;
+  /* height: 100%; */
 }
 .main{
-  background-color: #001a00;
-  height: 100vh;
+  /* background-color: #001a00; */
+  background-image: url("../images/double-bubble-dark.png");
+  background-repeat: repeat;
+  min-height: 100vh;
+  /* height: 100%; */
 }
 
 #lp_container {
@@ -86,31 +89,31 @@ body, html{
   font-size: 70%;
 }
 
-
 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 60px 200px 200px auto;
-    grid-template-areas: 
-        "header header header header"
-        "map image image social"
-        "leaderBoard image image health"
-        "description description choices choices"
-    ;
-    grid-gap: 5px;
-    background-color: #001a00;
-    justify-items: center; /*or stretch to fill the area
-    /* justify-content: center;  */
-    height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 60px 200px auto 100px;
+  grid-template-areas: 
+      "header header header"
+      "image image description"
+      "image image choices"
+      "health social choices"
+  ;
+  grid-gap: 4px;
+  /* background-color: #001a00; */
+  justify-items: center; /*or stretch to fill the area
+  /* justify-content: center;  */
+  height: 100%;
+  min-height: inherit;
 }
 
 /* grids */
 .container > div {
-  background-color: #ffbb80;
+  background-color: #F9D8A3;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
   font-size: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   box-sizing: border-box;
 }
@@ -165,23 +168,24 @@ img{
 
 /* bars and buttons */
 .progress {
-  margin-top: 30px;
+  margin: 10px 0px;
+  clear: both;
 }
 
 #progress__social, #progress__health {
-  height: 50px;
+  height: 28px;
 }
 
 #progress-bar__social, #progress-bar__health{
-  background-color: #e66b00;
+  background-color: #82D7CF;
 }
 
 .grid__choices > .btn__choice {
-  background-color: #e66b00;
+  background-color: #82D7CF;
   font-size: 16px;
   text-align: left;
+  box-shadow: 0 3px 0 0 #25746c;
 }
-
 
 /* fonts */
 h1{
@@ -189,6 +193,8 @@ h1{
   text-align: left;
   font-family: 'Girassol', cursive;
   float: left;
+  color: #8a0f1e;
+  text-shadow: 1px 1px #f00;
 }
 
 .grid__description > p{
@@ -197,8 +203,15 @@ h1{
 }
 
 .fas {
-  color: #e66b00;
+  color: #25746c;
+  font-size: 30px;
 }
 .icon__home{
   float: right;
+}
+.font--right{
+  float: right;
+}
+.font--left{
+  float: left;
 }
