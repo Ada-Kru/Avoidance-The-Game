@@ -24,21 +24,23 @@
       <div class="container">
         <div class="grid__header">
           <h1>Avoidance: The Game</h1>
-          <a class="icon__home" href="/"><span class="fas fa fa-home"></span></a> 
+          <!-- <a class="icon__home" href="/"><span class="fas fa fa-home"></span></a>  -->
+          <a class="icon__home" href="/"><span class="fa fas fa-sign-out"></span></a> 
         </div>
 
-        <div class="grid__map">Map</div>
-        <div class="grid__leaderBoard">Leader Board</div>
-
-        <div class="grid__social">Social points
+        <div class="grid__social">
+          <p class="font--left">Social points</p>
+          <p id="social_points" class="font--right">25 / 100</p>
           <div id="progress__social" class="progress">
-            <div id="progress-bar__social" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            <div id="progress-bar__social" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
 
-        <div class="grid__health">Health points
+        <div class="grid__health">
+          <p class="font--left">Health points</p>
+          <p id="health_points" class="font--right">25 / 100</p>
           <div id="progress__health" class="progress">
-            <div id="progress-bar__health" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            <div id="progress-bar__health" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
         
@@ -49,37 +51,15 @@
         </div>
 
         <div class="grid__description">What's going on?
-          <p id="description">Who’s that? It’s grandma! Hello! she calls out to you. What do you do?</p>
+          <p id="description">Who’s that? It’s grandma! Hello! she calls out to you.</p>
         </div>
-        <div class="grid__choices">What do you do?
+        <div class="grid__choices font--left">What do you do?
           <button id="choice1" type="button" class="btn btn__choice btn-lg btn-block">Turn off on a side street.</button>
           <button id="choice2" type="button" class="btn btn__choice btn-lg btn-block">Smile, wave and walk faster.</button>
           <button id="choice3" type="button" class="btn btn__choice btn-lg btn-block">Give her a quick hug, explain (again) what’s going on and how important social distancing is.</button>
         </div>
       </div>
     </div>
-
-    <!-- Ryan will do: 
-        - landing page
-            - basic html, css
-            - coordinate style with play page (font, color, spacnig, etc.)
-    -->
-
-
-    <!-- Kris will do: -->
-    <!-- verticle padding between grids -->
-    <!-- choose colors -->
-    <!-- choose font -->
-    <!-- stop overflow on sides -->
-    <!-- buttons for choices -->
-    <!--  -->
-
-    <!-- user stories -->
-    <!-- health points show up as a bar -->
-    <!-- social points show up a bar -->
-    <!-- chart in leaderboard -->
-    <!-- map?? -->
-    <!--  -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
@@ -93,3 +73,7 @@
     <script src="public/scripts/gamePlay.js"></script>
   </body>
 </html>
+
+
+<!-- acknowledgements -->
+<!-- background image: Tomislava Babić, https://www.toptal.com/designers/subtlepatterns/ -->
