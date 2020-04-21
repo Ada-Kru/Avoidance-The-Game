@@ -7,6 +7,7 @@ let index = 0;
 
 // play game
 
+// levels.images[levelNum].main....
 // show image
 // grab the html spot and put the image
 // storyArr[index].images.main
