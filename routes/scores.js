@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
   let output = { error: null };
   for (let score of [totalScore, healthScore, socialScore]) {
     score = parseInt(score);
-    if (score.isNaN || score < 0 || score > TOTAL_CHARACTER_TYPES - 1) {
+    if (score.isNaN || score < 0 || score > MAX_POSSIBLE_SCORE - 1) {
       output.error = SCORE_RANGE_MSG;
       res.send(output);
       return;
@@ -100,7 +100,7 @@ router.post("/newuser", async (req, res) => {
   } else {
     const existingUser = await db.query(
       `SELECT 1 FROM scores
-                                             WHERE name = $1`,
+       WHERE name = $1`,
       [name]
     );
     if (existingUser.rows.length) {
@@ -112,7 +112,7 @@ router.post("/newuser", async (req, res) => {
       let secretKey = uuid.v4();
       const { rows } = await db.query(
         `INSERT INTO scores (name, character_type, secret_key)
-                 VALUES ($1, $2, $3)`,
+         VALUES ($1, $2, $3)`,
         [name, characterType, secretKey]
       );
       output.secret_key = secretKey;
