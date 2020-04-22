@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
   let output = { error: null };
   for (let score of [totalScore, healthScore, socialScore]) {
     score = parseInt(score);
-    if (score.isNaN || score < 0 || score > MAX_POSSIBLE_SCORE - 1) {
+    if (score.isNaN || score < 0 || score > MAX_POSSIBLE_SCORE) {
       output.error = SCORE_RANGE_MSG;
       res.send(output);
       return;
