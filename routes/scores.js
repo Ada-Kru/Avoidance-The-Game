@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
   res.send(output);
 });
 
-// // GET request for getting a the top 10 scores.
+// // GET request for getting the top 10 scores.
 router.get("/topscores", async (req, res) => {
   const { rows } = await db.query(
     `SELECT name, character_type, total_score, health_score, social_score
