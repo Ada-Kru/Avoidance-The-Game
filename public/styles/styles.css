@@ -180,7 +180,7 @@ img{
   background-color: #82D7CF;
 }
 
-.grid__choices > .btn__choice {
+.grid__choices > .btn__choice, .grid__choices > .btn__next {
   background-color: #82D7CF;
   font-size: 16px;
   text-align: left;
