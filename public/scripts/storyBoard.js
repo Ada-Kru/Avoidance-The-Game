@@ -1,16 +1,10 @@
 const levels = {
   levelNum: [1, 2, 3, 4, 5],
-  images: [{
-    main: "img",
-    clipart1: [],
-    clipart2: []
-  }, {
-    main: "img2",
-    clipart1: []
-  }, {
-    
-  }, {}, {}
-
+  images: [
+    [
+      "street.jpg", "", ""
+    ],
+    [], [], [], []
   ],
 
   descriptions: [
