@@ -2,7 +2,7 @@ const levels = {
   images: [
     [
       ["level1-1-background1.jpg", "placeholder", "placeholder"],
-      ["level1-1-background1.jpg", "placeholder", "placeholder"],
+      ["level1-2-background1.jpg", "placeholder", "placeholder"],
     ],
     [
       ["level2-1-background1.jpg", "placeholder", "placeholder"],
