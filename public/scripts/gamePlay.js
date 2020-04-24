@@ -42,7 +42,7 @@ for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
       .css({ width: `${social}%` });
 
     // show desc of choice
-    $("#description").text(levels.choiceAnswers[i][choiceIndex]);
+    $("#description").text(levels.choiceAnswers[level][choiceIndex]);
 
     // update level/sublevel
     if (sublevel < 1) {
@@ -67,15 +67,17 @@ function playGame(level, health, social, sublevel) {
   // play game
   if (health != 0 && social != 0 && level <= 4) {
     // show image
-    console.log(level, sublevel);
     $("#main_img").attr("src", `images/${levels.images[level][sublevel][0]}`);
 
     // show desc
     $("#description").text(levels.descriptions[level][sublevel]);
 
     // show choices
-    $("#choice1").text(levels.choices[level][sublevel]);
-    $("#choice2").text(levels.choices[level][sublevel + 1]);
-    $("#choice3").text(levels.choices[level][sublevel + 2]);
+    $("#choice1").text(levels.choices[level][sublevel][0]);
+    $("#choice2").text(levels.choices[level][sublevel][1]);
+    $("#choice3").text(levels.choices[level][sublevel][2]);
+  }
+  else {
+      alert("Game finished!");
   }
 }
