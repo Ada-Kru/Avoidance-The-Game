@@ -26,8 +26,8 @@ $(".grid__choices").append(continueBtn);
 // user chooses one
 for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
   $(`#choice${choiceIndex + 1}`).click(() => {
-    let healthModifier = levels.points[level][choiceIndex][0];
-    let socialModifier = levels.points[level][choiceIndex][1];
+    let healthModifier = levels.points[level][sublevel][choiceIndex][0];
+    let socialModifier = levels.points[level][sublevel][choiceIndex][1];
 
     // update health and social points
     health += healthModifier;
@@ -42,7 +42,7 @@ for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
       .css({ width: `${social}%` });
 
     // show desc of choice
-    $("#description").text(levels.choiceAnswers[level][choiceIndex]);
+    $("#description").text(levels.choiceAnswers[level][subleve][choiceIndex]);
 
     // update level/sublevel
     if (sublevel < 1) {
