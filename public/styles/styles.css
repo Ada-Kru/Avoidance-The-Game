@@ -92,7 +92,7 @@ body, html{
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 60px 200px auto 100px;
+  grid-template-rows: 60px 250px auto 100px;
   grid-template-areas: 
       "header header header"
       "image image description"
@@ -176,15 +176,33 @@ img{
   height: 28px;
 }
 
-#progress-bar__social, #progress-bar__health{
+.progress-bar--normal {
   background-color: #82D7CF;
 }
+.progress-bar--danger{
+  background-color: #F65454;
+  -webkit-animation-name: flash .3s 4;
+  animation: flash .3s 4;
+}
 
-.grid__choices > .btn__choice, .grid__choices > .btn__next {
+@-webkit-keyframes flash {
+  from { background-color: #F65454; }
+  to { background-color: #8a0f1e; }
+}
+
+
+.grid__choices > .btn__choice, .grid__choices > .btn__next, .grid__description > .btn__play{
   background-color: #82D7CF;
   font-size: 16px;
-  text-align: left;
   box-shadow: 0 3px 0 0 #25746c;
+}
+
+.grid__choices > .btn__choice{
+  text-align: left;
+}
+
+.grid__choices > .btn__next, .grid__description > .btn__play{
+  text-align: center;
 }
 
 /* fonts */
@@ -203,7 +221,8 @@ h1{
 }
 
 .fas {
-  color: #25746c;
+  /* color: #25746c; */
+  color: #82D7CF;
   font-size: 30px;
 }
 .icon__home{
