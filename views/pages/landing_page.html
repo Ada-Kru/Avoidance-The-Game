@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+<body>
 <div class="main">
     <div id="lp_container">
         <div class="title__div">
@@ -28,10 +29,10 @@
         </div>
 
 
-        <form id="lp_form" action="#">
+        <form id="lp_form" action="https://avoidance-the-game.herokuapp.com" method="GET">
             <div class="form-group" id="lp_form_username">
                 <label for="username">Choose your username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter username">
+                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
             </div>
             <p>Choose your occupation</p>
             <div class="form-check">
@@ -77,8 +78,8 @@
 
 </div>
 
-<body>
-
+<script src="../../public/scripts/getJobPoints.js"></script>
+<script src="../../public/scripts/gamePlay.js"></script>
 </body>
 
 </html>

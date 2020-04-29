@@ -1,3 +1,5 @@
+
+
 // grab initial health and social points from landing page
 let health = 50;
 let social = 50;
