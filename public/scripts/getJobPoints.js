@@ -1,6 +1,7 @@
 let btn = document.querySelector(".btn")
 let choice = '';
 
+// get whatever occupation user checked
 function getRadioValue(){
     var element = document.getElementsByName('occupations');
 
