@@ -4,31 +4,25 @@ let social = 0;
 let level = 0;
 let sublevel = -1; // start at main level with no sublevel
 
+//Temp choice value so game still works
+let choice = "teacher";
+
 //Initialize health and social depending on occupation
-if (choice === 'nurse'){
+if (choice === "nurse") {
   health = 50;
   social = 80;
-} else if (choice === 'teacher'){
+} else if (choice === "teacher") {
   health = 50;
   social = 50;
-} else if (choice === 'librarian'){
+} else if (choice === "librarian") {
   health = 80;
   social = 50;
-} else{
+} else {
   health = -1;
   social = -1;
 }
 
-// update aria-valuenow with health and social
-$("#health_points").text(`${health} / 100`);
-$("#social_points").text(`${social} / 100`);
-$("#progress-bar__health")
-  .attr("aria-valuenow", health)
-  .css({ width: `${health}%` });
-$("#progress-bar__social")
-  .attr("aria-valuenow", social)
-  .css({ width: `${social}%` });
-
+updateStatusBars(health, social);
 
 // add continue button (after playing a sublevel)
 let continueBtn = $("<button>Continue</button>");
@@ -39,9 +33,8 @@ continueBtn.click(() => {
 });
 $(".grid__choices").append(continueBtn);
 
-
 // add play level button (to start a sublevel)
-let playBtn = $(`<button>Start level ${level+1}</button>`);
+let playBtn = $(`<button>Start level ${level + 1}</button>`);
 playBtn.attr({ id: "play", type: "button" });
 playBtn.addClass("btn btn__play btn-lg btn-block");
 playBtn.click(() => {
@@ -53,61 +46,26 @@ $(".grid__description").append(playBtn);
 // user chooses one
 for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
   $(`#choice${choiceIndex + 1}`).click(() => {
-    let healthModifier = levels.points[level][sublevel][choiceIndex][0];
-    let socialModifier = levels.points[level][sublevel][choiceIndex][1];
+    let [healthModifier, socialModifier] = levels.points[level][sublevel][
+      choiceIndex
+    ];
 
     // update health and social points
     health += healthModifier;
     social += socialModifier;
-    $("#health_points").text(`${health} / 100`);
-    $("#progress-bar__health")
-      .attr("aria-valuenow", health)
-      .css({ width: `${health}%` });
-    $("#social_points").text(`${social} / 100`);
-    $("#progress-bar__social")
-      .attr("aria-valuenow", social)
-      .css({ width: `${social}%` });
 
-    // update health and social points colors
-    if(health < 25) {
-      $("#progress-bar__health").removeClass("progress-bar--normal");
-      $("#progress-bar__health").addClass("progress-bar--danger");
-    }
-    else {
-      $("#progress-bar__health").addClass("progress-bar--normal");
-      $("#progress-bar__health").removeClass("progress-bar--danger"); 
-    }
-    if(social < 25) {
-      $("#progress-bar__social").removeClass("progress-bar--normal");
-      $("#progress-bar__social").addClass("progress-bar--danger");
-    }
-    else {
-      $("#progress-bar__social").addClass("progress-bar--normal");
-      $("#progress-bar__social").removeClass("progress-bar--danger"); 
-    }
+    updateStatusBars(health, social);
 
     // show desc of choice
     // also show affect of choice on social and health points
-    let text = `${levels.choiceAnswers[level][sublevel][choiceIndex]}<br><br>`;
-    if (socialModifier < 0) {
-      text += socialModifier + " social points and ";
-    }
-    else if (socialModifier > 0) {
-      text += `+` + socialModifier + " social points and ";
-    }
-    else {
-      text += socialModifier + " social points and ";
-    }
-    if (healthModifier < 0) {
-      text += healthModifier + " health points";
-    }
-    else if (healthModifier > 0) {
-      text += `+` + healthModifier + " health points";
-    }
-    else {
-      text += healthModifier + " health points";
-    }
-    $("#description").html(text);
+    let socialString = (socialModifier >= 0 ? "+" : "") + socialModifier;
+    let healthString = (healthModifier >= 0 ? "+" : "") + healthModifier;
+    $("#description").html(`
+    ${levels.choiceAnswers[level][sublevel][choiceIndex]}
+    <br>
+    <br>
+    ${socialString} social points and ${healthString} health points
+    `);
 
     // update level/sublevel
     if (sublevel < 1) {
@@ -115,7 +73,7 @@ for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
     } else {
       sublevel = -1;
       level++;
-      playBtn.html(`Start level ${level+1}`);
+      playBtn.html(`Start level ${level + 1}`);
     }
 
     // hide choice buttons, show continue button
@@ -129,7 +87,7 @@ playGame(level, health, social, sublevel);
 function playGame(level, health, social, sublevel) {
   $("#continue").hide();
   $(".btn__choice").hide();
-  $('#play').hide();
+  $("#play").hide();
 
   // play game
   if (health > 0 && social > 0 && level <= 4) {
@@ -137,21 +95,50 @@ function playGame(level, health, social, sublevel) {
     if (sublevel == -1) {
       $("#main_img").attr("src", `images/${levels.images[level][0][0]}`);
       $("#description").text(levels.descriptions[level][0]);
-      $('#play').show();
+      $("#play").show();
     }
 
     // if on sublevel, show desc and choices
     else {
       $(".btn__choice").show();
       $("#main_img").attr("src", `images/${levels.images[level][sublevel][0]}`);
-      $("#description").text(levels.descriptions[level][sublevel+1]);
+      $("#description").text(levels.descriptions[level][sublevel + 1]);
       $("#choice1").text(levels.choices[level][sublevel][0]);
       $("#choice2").text(levels.choices[level][sublevel][1]);
-      $("#choice3").text(levels.choices[level][sublevel][2]);      
+      $("#choice3").text(levels.choices[level][sublevel][2]);
     }
-
-  }
-  else {
+  } else {
     alert("Game finished!");
+  }
+}
+
+function updateStatusBars(health, social) {
+  $("#health_points").text(`${health} / 100`);
+  $("#social_points").text(`${social} / 100`);
+  $("#progress-bar__health")
+    .attr("aria-valuenow", health)
+    .css({ width: `${health}%` });
+  $("#progress-bar__social")
+    .attr("aria-valuenow", social)
+    .css({ width: `${social}%` });
+
+  // update health and social points colors
+  if (health < 25) {
+    $("#progress-bar__health")
+      .removeClass("progress-bar--normal")
+      .addClass("progress-bar--danger");
+  } else {
+    $("#progress-bar__health")
+      .addClass("progress-bar--normal")
+      .removeClass("progress-bar--danger");
+  }
+  if (social < 25) {
+    $("#progress-bar__social")
+      .removeClass("progress-bar--normal")
+      .addClass("progress-bar--danger");
+  } else {
+    $("#progress-bar__social")
+      .addClass("progress-bar--normal")
+      .removeClass("progress-bar--danger");
   }
 }
