@@ -1,8 +1,23 @@
 // grab initial health and social points from landing page
-let health = 50;
-let social = 50;
+let health = 0;
+let social = 0;
 let level = 0;
 let sublevel = -1; // start at main level with no sublevel
+
+//Initialize health and social depending on occupation
+if (choice === 'nurse'){
+  health = 50;
+  social = 80;
+} else if (choice === 'teacher'){
+  health = 50;
+  social = 50;
+} else if (choice === 'librarian'){
+  health = 80;
+  social = 50;
+} else{
+  health = -1;
+  social = -1;
+}
 
 // update aria-valuenow with health and social
 $("#health_points").text(`${health} / 100`);
