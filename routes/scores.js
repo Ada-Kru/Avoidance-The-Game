@@ -1,4 +1,4 @@
-// /scores endpoint for updating user score information
+// "/scores" endpoint for updating user score information
 
 const Router = require("express-promise-router");
 const db = require("../db");
@@ -22,6 +22,7 @@ const SCORE_RANGE_MSG = `Valid score range is from -1 to ${MAX_POSSIBLE_SCORE}`;
 
 // GET request for getting a single user's score.
 router.get("/", async (req, res) => {
+  let output = { error: null };
   const { name } = req.query;
   const { rows } = await db.query(
     `SELECT character_type, total_score, health_score, social_score
@@ -30,7 +31,12 @@ router.get("/", async (req, res) => {
      LIMIT 1`,
     [name]
   );
-  res.send(rows[0]);
+  if (rows.length) {
+    output.name = rows[0];
+  } else {
+    output.error = "Name not found in database.";
+  }
+  res.send(output);
 });
 
 // POST request for setting a user's score.
@@ -57,7 +63,7 @@ router.post("/", async (req, res) => {
   res.send(output);
 });
 
-// // GET request for getting the top 10 scores.
+// GET request for getting the top 10 scores.
 router.get("/topscores", async (req, res) => {
   const { rows } = await db.query(
     `SELECT name, character_type, total_score, health_score, social_score
