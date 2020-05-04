@@ -31,6 +31,8 @@ body, html{
     width: 100%;
     box-sizing: border-box;
     margin: 20px 0px;
+    position: relative;
+    top: 20px;
 }
 
 
@@ -75,6 +77,12 @@ body, html{
   margin-right: auto;
 }
 
+#play_again_form > button {
+  background-color: #e66b00;
+  font-size: 16px;
+  text-align: left;
+}
+
 #lp_form > button {
   background-color: #e66b00;
   font-size: 16px;
@@ -88,6 +96,7 @@ body, html{
 #nurse-pts, #teacher-pts, #librarian-pts{
   font-size: 70%;
 }
+
 
 .container {
   display: grid;
@@ -233,4 +242,43 @@ h1{
 }
 .font--left{
   float: left;
+}
+
+
+.score__container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: 
+    "header header"
+    "social health";
+  grid-gap: 4px;
+  /* background-color: #001a00; */
+  justify-items: center; /*or stretch to fill the area
+  /* justify-content: center;  */
+  height: 80%;
+  min-height: inherit;
+}
+
+
+.score__container > div {
+  /* background-color: #F9D8A3; */
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  /* border: 1px solid black; */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.score__header {
+  grid-area: header;
+}
+
+.score__social{
+  grid-area: social;
+}
+
+.score__health{
+  grid-area: health;
 }
