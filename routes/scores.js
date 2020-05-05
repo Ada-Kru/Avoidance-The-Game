@@ -13,6 +13,7 @@ const NAME_LENGTH_MSG =
   "Invalid username.  Names must be between 1 and 32 " + "characters long.";
 const NAME_IN_USE_MSG = "This username is already in use!.";
 const CHAR_TYPE_INVALID_MSG = "Invalid character type entered.";
+const NO_KEY_MSG = "The user's secret key must be sent with this request.";
 const MAX_POSSIBLE_SCORE = 10000;
 const TOTAL_CHARACTER_TYPES = 3;
 const CHAR_TYPE_RANGE_MSG = `Value of characterType must be within 0 - ${
@@ -50,6 +51,11 @@ router.post("/", async (req, res) => {
       res.send(output);
       return;
     }
+  }
+  if (secretKey == undefined) {
+      output.error = NO_KEY_MSG;
+      res.send(output);
+      return;
   }
   const { rows } = await db.query(
     `UPDATE scores
