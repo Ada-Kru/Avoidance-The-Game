@@ -4,9 +4,6 @@ let social = 0;
 let level = 0;
 let sublevel = -1; // start at main level with no sublevel
 
-//Temp choice value so game still works
-let choice = "teacher";
-
 //Initialize health and social depending on occupation
 if (choice === "nurse") {
   health = 50;
