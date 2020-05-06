@@ -17,9 +17,9 @@ if (choice === "nurse") {
 } else if (choice === "librarian") {
   health = 80;
   social = 50;
-} else {
-  health = -1;
-  social = -1;
+} else{
+  health = 50;
+  social = 50;
 }
 
 updateStatusBars(health, social);
@@ -46,9 +46,8 @@ $(".grid__description").append(playBtn);
 // user chooses one
 for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
   $(`#choice${choiceIndex + 1}`).click(() => {
-    let [healthModifier, socialModifier] = levels.points[level][sublevel][
-      choiceIndex
-    ];
+    let socialModifier = levels.points[level][sublevel][choiceIndex][0];
+    let healthModifier = levels.points[level][sublevel][choiceIndex][1];
 
     // update health and social points
     health += healthModifier;
