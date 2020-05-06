@@ -41,12 +41,12 @@ const levels = {
     [
       "After work you decide to jog through the park to exercise and clear your head.", 
       "There are a ton of people at the park!  A particularly large group of people are walking in your direction taking up the entire path.", 
-      "You run into your boss, also going for a run, who mentions an upcoming work retreat.  They say the bus is booked and laugh about \"social distancing\" on a bus.  And you'll be coming, right? They imply consequences if you do not."
+      "You run into your boss, also exercising in the park, who mentions an upcoming work retreat.  He says the bus is booked and laughs about \"social distancing\" on a bus.  And you'll be coming, right? He implies consequences if you do not."
     ],
     [
       "What a day! Thankfully, it's almost at an end. You've managed to avoid the pandemic so far...", 
       "It’s time to decide for dinner! Do you take this opportunity to attempt to cook at home, which you haven’t done since 1999 or order in like you normally do? You could also phone a kitchen-saavy friend and cook together.", 
-      "After dinner your roommate comes home and doesn't look too good.Turns out your roommate is sick, has a high fever, chills, basically the works."
+      "After dinner your roommate comes home and doesn't look too good. Turns out your roommate is sick, has a high fever, chills, basically the works."
     ],
   ],
 
@@ -57,7 +57,11 @@ const levels = {
         "Smile, wave and walk faster.",
         "Give her a quick hug and explain (again) what’s going on and how important social distancing is.",
       ],
-      ["Go to the coffee shop.", "Go down a side street.", "Grab a newspaper."],
+      [
+        "Go to the coffee shop.", 
+        "Go down a side street.", 
+        "Grab a newspaper."
+      ],
     ],
     [
       [
@@ -74,7 +78,7 @@ const levels = {
     [
       [
         "Go to the workplace cafeteria.", 
-        "Order a delivery and eat lunch at your desk.",
+        "Order delivery and eat lunch at your desk.",
         "Skip lunch."
       ],
       [
@@ -90,7 +94,7 @@ const levels = {
         "Walk through the group on the sidewalk."
       ],
       [
-        "Tell they, yes, you'll be there.", 
+        "Tell him, yes, you'll be there.", 
         "You'd like to be there, but cannot because you are worried about the health aspects of the trip.", 
         "Make up a quick excuse about needing to attend your sister's wedding at the same date."
       ],
@@ -104,7 +108,7 @@ const levels = {
       [
         "Sick again? Live and let live, you always say.",
         "Pack your bags and stay with your family.", 
-        "Help your roommate self-quarentine.", 
+        "Help your roommate self-quarantine.", 
       ],
     ],
   ],
@@ -138,8 +142,8 @@ const levels = {
         "You did not eat anything for lunch."
       ],
       [
-        "You avoid the meeting by leaving work. Another coworked with the same idea stops you in the parking lot and corners you. After several minutes of complaining and sneezing in your general direction you leave without saying anything else.", 
-        "You go to the meeting and realize that it will just be a zoom presentation. You sit as far as possible from the nearest coworker and avoid most social interaction.", 
+        "You avoid the meeting by leaving work. Another coworked with the same idea corners you in the parking lot. After several minutes of complaining and sneezing in your general direction you leave without saying anything else.", 
+        "You go to the meeting and realize that it will just be a zoom presentation. You sit as far as possible from the nearest coworker and are still able to contribute.", 
         "You sit in your car for an hour while everyone is in the meeting. You avoid social interaction, but miss out on crucial team information. "
       ],
     ], [
@@ -150,12 +154,12 @@ const levels = {
       ],
       [
         "Thinking about the long crowded bus trip ahead worries you quite a bit.", 
-        "The manager gives you a short lecture about not being a team player and how foolish it is to worry about a simple bus trip.", 
-        "The manager reluctantly accepts your excuse and jogs away.  You know he was disappointed and worry about possible repercussions."
+        "Your boss gives you a short lecture about not being a team player and how foolish it is to worry about a simple bus trip.", 
+        "Your boss reluctantly accepts your excuse and jogs away.  You know he was disappointed and worry about possible repercussions."
       ],
     ], [
       [
-        "Cooking was a major success, you cooked enough food for a month and learned all about freezing leftovers!", 
+        "The trip to the grocery store was unbearable. It took too long, was too crowded and you had a difficult time figuring out what to get.", 
         "Cooking was a major success, you cooked enough food for a month and learned all about freezing leftovers!", 
         "You decide to stick with that status quo, ordering your food. Your decision helps keep restaurant and delivery employees working, but being overly exposed to food cooked by so many different people has left you exposed."
       ],
@@ -170,12 +174,12 @@ const levels = {
     [
       [
         [-30, 20],
-        [15, 0],
+        [15, 10],
         [30, -30],
       ],
       [
-        [5, -20],
-        [-25, 0],
+        [5, -15],
+        [-25, -5],
         [0, -15],
       ],
     ],[
@@ -187,38 +191,38 @@ const levels = {
       [
         [0, 20],
         [-20, 10],
-        [20, -50],
+        [25, -35],
       ],
     ], [
       [
-        [30, -15],
+        [30, -30],
         [-15, 15],
         [0, -20],
       ],
       [
-        [-15, -15],
-        [5, 10],
+        [-15, -25],
+        [20, 5],
         [-15, 5],
       ],
     ], [
       [
         [-40, -30],
-        [-10, 20],
-        [0, 10],
+        [-10, 30],
+        [5, -10],
       ],
       [
         [20, -30],
         [-30, 0],
-        [-10, 0],
+        [-1, 0],
       ],
     ], [
       [
-        [0, -15],
-        [10, 25],
-        [30, -15],
+        [0, -20],
+        [25, 5],
+        [0, -1],
       ],
       [
-        [-25, -75],
+        [-35, -75],
         [-50, -75],
         [25, 15],
       ],

@@ -15,8 +15,8 @@ if (choice === 'nurse'){
   health = 80;
   social = 50;
 } else{
-  health = -1;
-  social = -1;
+  health = 50;
+  social = 50;
 }
 
 // update aria-valuenow with health and social
@@ -53,8 +53,8 @@ $(".grid__description").append(playBtn);
 // user chooses one
 for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
   $(`#choice${choiceIndex + 1}`).click(() => {
-    let healthModifier = levels.points[level][sublevel][choiceIndex][0];
-    let socialModifier = levels.points[level][sublevel][choiceIndex][1];
+    let socialModifier = levels.points[level][sublevel][choiceIndex][0];
+    let healthModifier = levels.points[level][sublevel][choiceIndex][1];
 
     // update health and social points
     health += healthModifier;
