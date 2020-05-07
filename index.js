@@ -9,7 +9,10 @@ const app = express()
   .engine('html', require('ejs').renderFile)
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'html')
-  .get('/', (req, res) => res.render('pages/index'));
+  .get('/', (req, res) => res.render('pages/landing_page')) 
+  .get('/index',(req,res) => res.render('pages/index'))
+  .get('/end_page',(req,res) => res.render('pages/end_page'))
+  
 
 mountRoutes(app);
 

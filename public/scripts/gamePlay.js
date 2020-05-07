@@ -104,7 +104,7 @@ function playGame(level, health, social, sublevel) {
       $("#choice3").text(levels.choices[level][sublevel][2]);
     }
   } else {
-    alert("Game finished!");
+    window.location.href = "/end_page";
   }
 }
 
