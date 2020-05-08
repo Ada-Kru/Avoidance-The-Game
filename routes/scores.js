@@ -11,7 +11,7 @@ const NAME_INVALID_MSG =
   "and spaces.";
 const NAME_LENGTH_MSG =
   "Invalid username.  Names must be between 1 and 32 " + "characters long.";
-const NAME_IN_USE_MSG = "This username is already in use!.";
+const NAME_IN_USE_MSG = "This username is already in use.";
 const CHAR_TYPE_INVALID_MSG = "Invalid character type entered.";
 const NO_KEY_MSG = "The user's secret key must be sent with this request.";
 const MAX_POSSIBLE_SCORE = 10000;
