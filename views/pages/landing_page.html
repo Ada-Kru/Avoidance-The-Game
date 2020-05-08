@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
 
     <!-- stylesheets -->
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
@@ -32,7 +32,7 @@
         <form id="lp_form" action="/index" method="GET">
             <div class="form-group" id="lp_form_username">
                 <label for="username">Choose your username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
             </div>
             <p>Choose your occupation</p>
             <div class="form-check">
@@ -78,8 +78,7 @@
 
 </div>
 
-<script src="../../public/scripts/getJobPoints.js"></script>
-<script src="../../public/scripts/gamePlay.js"></script>
+<script type="application/javascript" src="/scripts/getJobPoints.js"></script>
 </body>
 
 </html>

@@ -3,15 +3,22 @@ let health = 0;
 let social = 0;
 let level = 0;
 let sublevel = -1; // start at main level with no sublevel
+let name = localStorage.getItem("name");
+let occupation = localStorage.getItem("occupation");
+
+// If the name or occupation were not set navigate back to the landing page.
+if (name == null || occupation == null) {
+    window.location.href = "/";
+}
 
 //Initialize health and social depending on occupation
-if (choice === "nurse") {
+if (occupation === "nurse") {
   health = 50;
   social = 80;
-} else if (choice === "teacher") {
+} else if (occupation === "teacher") {
   health = 50;
   social = 50;
-} else if (choice === "librarian") {
+} else if (occupation === "librarian") {
   health = 80;
   social = 50;
 } else{
