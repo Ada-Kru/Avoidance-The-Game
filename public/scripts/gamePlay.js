@@ -112,7 +112,7 @@ function playGame(level, health, social, sublevel) {
       $("#choice3").text(levels.choices[level][sublevel][2]);
     }
   } else {
-    window.location.href = "/end_page";
+    gameEnded();
   }
 }
 
@@ -145,4 +145,30 @@ function updateStatusBars(health, social) {
       .addClass("progress-bar--normal")
       .removeClass("progress-bar--danger");
   }
+}
+
+async function gameEnded() {
+  // Try to save the user's scores on the database.
+  try {
+    let data = {
+      healthScore: Math.max(0, health),
+      socialScore: Math.max(0, social),
+      totalScore: Math.max(0, health + social),
+      secretKey: secretKey,
+    };
+    let result = await fetch("/scores/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    result = await result.json();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+
+  window.location.href = "/end_page";
 }

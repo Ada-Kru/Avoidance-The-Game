@@ -51,10 +51,9 @@ submitBtn.addEventListener("click", async (evt) => {
   window.location.href = "/index";
 });
 
-
 function showError(msg) {
-    nameEntry.setCustomValidity(msg);
-    nameEntry.reportValidity(msg);
+  nameEntry.setCustomValidity(msg);
+  nameEntry.reportValidity(msg);
 }
 
 async function createUser(name, job) {
@@ -69,11 +68,8 @@ async function createUser(name, job) {
     });
 
     return await result.json();
+  } catch (err) {
+    console.log(err);
+    return { error: "Could not connect to database!" };
   }
-  catch(err) {
-      console.log(err);
-      return {error: "Could not connect to database!"}
-  }
-
-
 }
