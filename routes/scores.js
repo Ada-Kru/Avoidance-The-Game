@@ -14,12 +14,13 @@ const NAME_LENGTH_MSG =
 const NAME_IN_USE_MSG = "This username is already in use.";
 const CHAR_TYPE_INVALID_MSG = "Invalid character type entered.";
 const NO_KEY_MSG = "The user's secret key must be sent with this request.";
+const MIN_POSSIBLE_SCORE = -10000;
 const MAX_POSSIBLE_SCORE = 10000;
 const TOTAL_CHARACTER_TYPES = 3;
 const CHAR_TYPE_RANGE_MSG = `Value of characterType must be within 0 - ${
   TOTAL_CHARACTER_TYPES - 1
 }`;
-const SCORE_RANGE_MSG = `Valid score range is from -1 to ${MAX_POSSIBLE_SCORE}`;
+const SCORE_RANGE_MSG = `Valid score range is from ${MIN_POSSIBLE_SCORE} to ${MAX_POSSIBLE_SCORE}`;
 
 // GET request for getting a single user's score.
 router.get("/", async (req, res) => {
@@ -53,9 +54,9 @@ router.post("/", async (req, res) => {
     }
   }
   if (secretKey == undefined) {
-      output.error = NO_KEY_MSG;
-      res.send(output);
-      return;
+    output.error = NO_KEY_MSG;
+    res.send(output);
+    return;
   }
   const { rows } = await db.query(
     `UPDATE scores
@@ -74,7 +75,7 @@ router.get("/topscores", async (req, res) => {
   const { rows } = await db.query(
     `SELECT name, character_type, total_score, health_score, social_score
      FROM scores
-     WHERE total_score > -1
+     WHERE total_score > ${MIN_POSSIBLE_SCORE}
      ORDER BY total_score DESC
      LIMIT 10`
   );
@@ -123,8 +124,8 @@ router.post("/newuser", async (req, res) => {
       // user has no score recorded yet.
       let secretKey = uuid.v4();
       const { rows } = await db.query(
-        `INSERT INTO scores (name, character_type, secret_key)
-         VALUES ($1, $2, $3)`,
+        `INSERT INTO scores (name, character_type, secret_key, total_score, health_score, social_score)
+         VALUES ($1, $2, $3, ${MIN_POSSIBLE_SCORE}, ${MIN_POSSIBLE_SCORE}, ${MIN_POSSIBLE_SCORE})`,
         [name, characterType, secretKey]
       );
       output.secret_key = secretKey;
@@ -142,9 +143,9 @@ CREATE TABLE scores(
     id SERIAL PRIMARY KEY,
     name VARCHAR(32) NOT NULL,
     character_type INT NOT NULL,
-    total_score INT NOT NULL DEFAULT -1,
-    health_score INT NOT NULL DEFAULT -1,
-    social_score INT NOT NULL DEFAULT -1,
+    total_score INT NOT NULL DEFAULT -10000,
+    health_score INT NOT NULL DEFAULT -10000,
+    social_score INT NOT NULL DEFAULT -10000,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     secret_key CHAR(36)
 );
