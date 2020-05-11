@@ -3,18 +3,25 @@ let health = 0;
 let social = 0;
 let level = 0;
 let sublevel = -1; // start at main level with no sublevel
+let name = localStorage.getItem("name");
+let occupation = localStorage.getItem("occupation");
+
+// If the name or occupation were not set navigate back to the landing page.
+if (name == null || occupation == null) {
+  window.location.href = "/";
+}
 
 //Initialize health and social depending on occupation
-if (choice === "nurse") {
+if (occupation === "0") {
   health = 50;
   social = 80;
-} else if (choice === "teacher") {
+} else if (occupation === "1") {
   health = 50;
   social = 50;
-} else if (choice === "librarian") {
+} else if (occupation === "2") {
   health = 80;
   social = 50;
-} else{
+} else {
   health = 50;
   social = 50;
 }
@@ -47,8 +54,8 @@ for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
     let healthModifier = levels.points[level][sublevel][choiceIndex][1];
 
     // update health and social points
-    health += healthModifier;
-    social += socialModifier;
+    health = Math.min(100, health + healthModifier);
+    social = Math.min(100, social + socialModifier);
 
     updateStatusBars(health, social);
 
@@ -104,7 +111,7 @@ function playGame(level, health, social, sublevel) {
       $("#choice3").text(levels.choices[level][sublevel][2]);
     }
   } else {
-    window.location.href = "/end_page";
+    gameEnded();
   }
 }
 
@@ -137,4 +144,31 @@ function updateStatusBars(health, social) {
       .addClass("progress-bar--normal")
       .removeClass("progress-bar--danger");
   }
+}
+
+async function gameEnded() {
+  // Try to save the user's scores on the database.
+  try {
+    let data = {
+      name: name,
+      healthScore: health,
+      socialScore: social,
+      totalScore: health + social,
+      characterType: occupation,
+    };
+    let result = await fetch("/scores/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    result = await result.json();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+
+  window.location.href = "/end_page";
 }

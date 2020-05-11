@@ -1,0 +1,25 @@
+POST /scores/
+Set the score for a provided name
+Parameters:
+points: The new score for this user
+secretkey: The secret key for this user
+Returns:
+nothing
+
+GET /scores/topscores
+Get the top 10 scores
+Parameters:
+none
+Returns:
+JSON with an array of objects in descending order containing name, character_type, total_score, health_score, and social_score keys.
+
+GET /scores/
+Get the scores for a provided name
+Parameters:
+name: The name of the user
+Returns:
+If there was an error:
+  JSON object with an error key with a string value with information about the error.
+
+If there were no errors:
+  JSON object with a scores key with value of an array of objects with character_type, total_score, health_score, and social_score keys.

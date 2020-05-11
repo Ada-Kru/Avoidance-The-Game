@@ -11,59 +11,63 @@ const NAME_INVALID_MSG =
   "and spaces.";
 const NAME_LENGTH_MSG =
   "Invalid username.  Names must be between 1 and 32 " + "characters long.";
-const NAME_IN_USE_MSG = "This username is already in use!.";
 const CHAR_TYPE_INVALID_MSG = "Invalid character type entered.";
-const NO_KEY_MSG = "The user's secret key must be sent with this request.";
+const MIN_POSSIBLE_SCORE = -10000;
 const MAX_POSSIBLE_SCORE = 10000;
 const TOTAL_CHARACTER_TYPES = 3;
 const CHAR_TYPE_RANGE_MSG = `Value of characterType must be within 0 - ${
   TOTAL_CHARACTER_TYPES - 1
 }`;
-const SCORE_RANGE_MSG = `Valid score range is from -1 to ${MAX_POSSIBLE_SCORE}`;
+const SCORE_RANGE_MSG = `Valid score range is from ${MIN_POSSIBLE_SCORE} to ${MAX_POSSIBLE_SCORE}`;
 
 // GET request for getting a single user's score.
 router.get("/", async (req, res) => {
   let output = { error: null };
-  const { name } = req.query;
+  const name = req.query.name;
   const { rows } = await db.query(
     `SELECT character_type, total_score, health_score, social_score
      FROM scores
-     WHERE name = $1
-     LIMIT 1`,
+     WHERE name = $1`,
     [name]
   );
   if (rows.length) {
-    output.name = rows[0];
+    output.scores = rows;
   } else {
     output.error = "Name not found in database.";
   }
   res.send(output);
 });
 
-// POST request for setting a user's score.
+// POST request for entering a new user into the database.  The request must
+// include their name, character type, and the three score values.
 router.post("/", async (req, res) => {
-  const { totalScore, healthScore, socialScore, secretKey } = req.body;
   let output = { error: null };
-  for (let score of [totalScore, healthScore, socialScore]) {
-    score = parseInt(score);
-    if (score.isNaN || score < 0 || score > MAX_POSSIBLE_SCORE) {
-      output.error = SCORE_RANGE_MSG;
+  let name = "";
+  try {
+    name = req.body.name.trim();
+  } catch (err) {}
+  let ts = parseInt(req.body.totalScore);
+  let hs = parseInt(req.body.healthScore);
+  let ss = parseInt(req.body.socialScore);
+  let ct = parseInt(req.body.characterType);
+
+  for (let err of [
+    getNameErrors(name),
+    getScoreErrors(ts, hs, ss),
+    getCharTypeErrors(ct),
+  ]) {
+    if (err != null) {
+      output.error = err;
       res.send(output);
       return;
     }
   }
-  if (secretKey == undefined) {
-      output.error = NO_KEY_MSG;
-      res.send(output);
-      return;
-  }
+
   const { rows } = await db.query(
-    `UPDATE scores
-     SET total_score = $1,
-         health_score = $2,
-         social_score = $3
-     WHERE secret_key = $4`,
-    [totalScore, healthScore, socialScore, secretKey]
+    `INSERT INTO scores
+     (name, character_type, total_score, health_score, social_score)
+     VALUES ($1, $2, $3, $4, $5)`,
+    [name, ct, ts, hs, ss]
   );
 
   res.send(output);
@@ -74,65 +78,41 @@ router.get("/topscores", async (req, res) => {
   const { rows } = await db.query(
     `SELECT name, character_type, total_score, health_score, social_score
      FROM scores
-     WHERE total_score > -1
+     WHERE total_score > ${MIN_POSSIBLE_SCORE}
      ORDER BY total_score DESC
      LIMIT 10`
   );
   res.send(rows);
 });
 
-// POST request for creating a new user entry.
-// After checking that the requested name is valid and not in use create a
-// secret key and add an entry into the table.  The key is returned to the
-// client and is is required to be sent when updating their score.
-router.post("/newuser", async (req, res) => {
-  let { name, characterType } = req.body;
-  let output = { error: null };
-
-  name = name.trim();
-  try {
-    characterType = parseInt(characterType);
-    if (
-      characterType.isNaN ||
-      characterType < 0 ||
-      characterType > TOTAL_CHARACTER_TYPES - 1
-    ) {
-      throw CHAR_TYPE_RANGE_MSG;
-    }
-  } catch (err) {
-    output.error = CHAR_TYPE_RANGE_MSG;
-    res.send(output);
-    return;
-  }
-
+function getNameErrors(name) {
   if (name.length > 32 || name.length == 0) {
-    output.error = NAME_LENGTH_MSG;
+    return NAME_LENGTH_MSG;
   } else if (/[^a-z0-9 ]/i.test(name)) {
-    output.error = NAME_INVALID_MSG;
-  } else {
-    const existingUser = await db.query(
-      `SELECT 1 FROM scores
-       WHERE name = $1`,
-      [name]
-    );
-    if (existingUser.rows.length) {
-      output.error = NAME_IN_USE_MSG;
-    } else {
-      // Create a new user if the username was valid.  All score columns
-      // for this user will be set to -1 by default to indicate that the
-      // user has no score recorded yet.
-      let secretKey = uuid.v4();
-      const { rows } = await db.query(
-        `INSERT INTO scores (name, character_type, secret_key)
-         VALUES ($1, $2, $3)`,
-        [name, characterType, secretKey]
-      );
-      output.secret_key = secretKey;
+    return NAME_INVALID_MSG;
+  }
+  return null;
+}
+
+function getScoreErrors(totalScore, healthScore, socialScore) {
+  for (let score of arguments) {
+    if (
+      score.isNaN ||
+      score < MIN_POSSIBLE_SCORE ||
+      score > MAX_POSSIBLE_SCORE
+    ) {
+      return SCORE_RANGE_MSG;
     }
   }
+  return null;
+}
 
-  res.send(output);
-});
+function getCharTypeErrors(ct) {
+  if (ct.isNaN || ct < 0 || ct > TOTAL_CHARACTER_TYPES - 1) {
+    return CHAR_TYPE_RANGE_MSG;
+  }
+  return null;
+}
 
 module.exports = router;
 
@@ -142,11 +122,10 @@ CREATE TABLE scores(
     id SERIAL PRIMARY KEY,
     name VARCHAR(32) NOT NULL,
     character_type INT NOT NULL,
-    total_score INT NOT NULL DEFAULT -1,
-    health_score INT NOT NULL DEFAULT -1,
-    social_score INT NOT NULL DEFAULT -1,
-    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    secret_key CHAR(36)
+    total_score INT NOT NULL DEFAULT -10000,
+    health_score INT NOT NULL DEFAULT -10000,
+    social_score INT NOT NULL DEFAULT -10000,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 */
 
