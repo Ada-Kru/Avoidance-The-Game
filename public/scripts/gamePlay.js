@@ -5,21 +5,20 @@ let level = 0;
 let sublevel = -1; // start at main level with no sublevel
 let name = localStorage.getItem("name");
 let occupation = localStorage.getItem("occupation");
-let secretKey = localStorage.getItem("secretKey");
 
 // If the name or occupation were not set navigate back to the landing page.
-if (name == null || occupation == null || secretKey == null) {
+if (name == null || occupation == null) {
   window.location.href = "/";
 }
 
 //Initialize health and social depending on occupation
-if (occupation === "nurse") {
+if (occupation === "0") {
   health = 50;
   social = 80;
-} else if (occupation === "teacher") {
+} else if (occupation === "1") {
   health = 50;
   social = 50;
-} else if (occupation === "librarian") {
+} else if (occupation === "2") {
   health = 80;
   social = 50;
 } else {
@@ -151,10 +150,11 @@ async function gameEnded() {
   // Try to save the user's scores on the database.
   try {
     let data = {
+      name: name,
       healthScore: Math.max(0, health),
       socialScore: Math.max(0, social),
       totalScore: Math.max(0, health + social),
-      secretKey: secretKey,
+      characterType: occupation,
     };
     let result = await fetch("/scores/", {
       method: "POST",
