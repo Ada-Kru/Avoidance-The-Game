@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
     [name]
   );
   if (rows.length) {
-    output.scores = rows[0];
+    output.scores = rows;
   } else {
     output.error = "Name not found in database.";
   }
@@ -96,7 +96,11 @@ function getNameErrors(name) {
 
 function getScoreErrors(totalScore, healthScore, socialScore) {
   for (let score of arguments) {
-    if (score.isNaN || score < 0 || score > MAX_POSSIBLE_SCORE) {
+    if (
+      score.isNaN ||
+      score < MIN_POSSIBLE_SCORE ||
+      score > MAX_POSSIBLE_SCORE
+    ) {
       return SCORE_RANGE_MSG;
     }
   }

@@ -54,8 +54,8 @@ for (let choiceIndex = 0; choiceIndex < 3; choiceIndex++) {
     let healthModifier = levels.points[level][sublevel][choiceIndex][1];
 
     // update health and social points
-    health += healthModifier;
-    social += socialModifier;
+    health = Math.min(100, health + healthModifier);
+    social = Math.min(100, social + socialModifier);
 
     updateStatusBars(health, social);
 
@@ -151,9 +151,9 @@ async function gameEnded() {
   try {
     let data = {
       name: name,
-      healthScore: Math.max(0, health),
-      socialScore: Math.max(0, social),
-      totalScore: Math.max(0, health + social),
+      healthScore: health,
+      socialScore: social,
+      totalScore: health + social,
       characterType: occupation,
     };
     let result = await fetch("/scores/", {
