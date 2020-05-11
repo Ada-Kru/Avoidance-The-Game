@@ -11,9 +11,7 @@ const NAME_INVALID_MSG =
   "and spaces.";
 const NAME_LENGTH_MSG =
   "Invalid username.  Names must be between 1 and 32 " + "characters long.";
-const NAME_IN_USE_MSG = "This username is already in use.";
 const CHAR_TYPE_INVALID_MSG = "Invalid character type entered.";
-const NO_KEY_MSG = "The user's secret key must be sent with this request.";
 const MIN_POSSIBLE_SCORE = -10000;
 const MAX_POSSIBLE_SCORE = 10000;
 const TOTAL_CHARACTER_TYPES = 3;
@@ -25,16 +23,15 @@ const SCORE_RANGE_MSG = `Valid score range is from ${MIN_POSSIBLE_SCORE} to ${MA
 // GET request for getting a single user's score.
 router.get("/", async (req, res) => {
   let output = { error: null };
-  const { name } = req.query;
+  const name = req.query.name;
   const { rows } = await db.query(
     `SELECT character_type, total_score, health_score, social_score
      FROM scores
-     WHERE name = $1
-     LIMIT 1`,
+     WHERE name = $1`,
     [name]
   );
   if (rows.length) {
-    output.name = rows[0];
+    output.scores = rows[0];
   } else {
     output.error = "Name not found in database.";
   }
@@ -124,8 +121,7 @@ CREATE TABLE scores(
     total_score INT NOT NULL DEFAULT -10000,
     health_score INT NOT NULL DEFAULT -10000,
     social_score INT NOT NULL DEFAULT -10000,
-    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    secret_key CHAR(36)
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 */
 
