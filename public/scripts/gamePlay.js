@@ -151,11 +151,16 @@ async function gameEnded() {
   try {
     let data = {
       name: name,
-      healthScore: health,
-      socialScore: social,
-      totalScore: health + social,
+      healthScore: health * 10,
+      socialScore: social * 10,
+      totalScore: (health + social) * 10,
       characterType: occupation,
     };
+
+    localStorage.setItem("socialScore", data.socialScore);
+    localStorage.setItem("healthScore", data.healthScore);
+    localStorage.setItem("totalScore", data.totalScore);
+
     let result = await fetch("/scores/", {
       method: "POST",
       headers: {
