@@ -172,3 +172,15 @@ async function gameEnded() {
 
   window.location.href = "/end_page";
 }
+
+async function populateLeaderboard() {
+  let response = await fetch("/scores/topscores");
+  console.log("calling function")
+  if (response.ok) { // if HTTP-status is 200-299
+    // get the response body (the method explained below)
+    let json = await response.json();
+    console.log(json)
+  } else {
+    alert("HTTP-Error: " + response.status);
+  }
+}
