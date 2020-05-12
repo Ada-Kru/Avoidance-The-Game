@@ -32,7 +32,7 @@
             </div>
             <div class = 'table-responsive'>
                 <h1>Leaderboard</h1>
-                <table class="table table-dark">
+                <table class="table table-dark" id="leaderboard_table">
                     <thead>
                       <tr>
                         <th scope="col">Ranking</th>
@@ -41,11 +41,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td id="test_username"></td>
-                        <td id="test_score"></td>
-                      </tr>
+                      
                     </tbody>
                   </table>
             </div>
@@ -56,24 +52,11 @@
     </div>
 
     <div id="test"></div>
+    <script type="application/javascript" src="/scripts/gamePlay.js"></script>
+    
     <script>
       $(document).ready(populateLeaderboard());
-
-      async function populateLeaderboard() {
-        let response = await fetch("/scores/topscores/");
-       
-        if (response.ok) { // if HTTP-status is 200-299
-          // json is array of objects (users)
-          let json = await response.json();
-          json.forEach(function(user){
-            $("#test_username").html(user.name)
-            $("#test_score").html(user.total_score)
-          })
-        } else {
-          alert("HTTP-Error: " + response.status);
-        }
-      }
-      
-    </script>
+    </script>   
+    
 </body>
 </html>
