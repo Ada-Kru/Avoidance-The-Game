@@ -112,6 +112,7 @@ function playGame(level, health, social, sublevel) {
     }
   } else {
     gameEnded();
+    
   }
 }
 

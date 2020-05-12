@@ -43,8 +43,8 @@
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
-                        <td>username-from-db</td>
-                        <td>points-from-db</td>
+                        <td id="test_username"></td>
+                        <td id="test_score"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -59,14 +59,16 @@
     <script>
       $(document).ready(populateLeaderboard());
 
-
       async function populateLeaderboard() {
         let response = await fetch("/scores/topscores/");
-        console.log("calling function")
+       
         if (response.ok) { // if HTTP-status is 200-299
-          // get the response body (the method explained below)
+          // json is array of objects (users)
           let json = await response.json();
-          console.log(json)
+          json.forEach(function(user){
+            $("#test_username").html(user.name)
+            $("#test_score").html(user.total_score)
+          })
         } else {
           alert("HTTP-Error: " + response.status);
         }
