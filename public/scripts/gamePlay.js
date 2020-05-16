@@ -30,27 +30,16 @@ updateStatusBars(health, social);
 
 // add continue button (after playing a sublevel)
 let continueBtn = addBtn("Continue", "continue", "btn__next", ".grid__choices");
-
-// let continueBtn = $("<button>Continue</button>");
-// continueBtn.attr({ id: "continue", type: "button" });
-// continueBtn.addClass("btn btn__next btn-lg btn-block");
 continueBtn.click(() => {
   playGame(level, health, social, sublevel);
 });
-// $(".grid__choices").append(continueBtn);
 
 // add play level button (to start a sublevel)
 let playBtn = addBtn(`Start level ${level + 1}`, "play", "btn__play", ".grid__description");
-
-// let playBtn = $(`<button>Start level ${level + 1}</button>`);
-// playBtn.attr({ id: "play", type: "button" });
-// playBtn.addClass("btn btn__play btn-lg btn-block");
 playBtn.click(() => {
   sublevel++;
   playGame(level, health, social, sublevel);
 });
-// $(".grid__description").append(playBtn);
-
 
 
 // user chooses one
@@ -189,10 +178,6 @@ function addBtn(text, id, className, where) {
   let btn = $(`<button>${text}</button>`);
   btn.attr({ id: id, type: "button" });
   btn.addClass(`btn ${className} btn-lg btn-block`);
-  // btn.click(() => {
-  //   sublevel++;
-  //   playGame(level, health, social, sublevel);
-  // });
   $(where).append(btn); 
   return btn;
 }
