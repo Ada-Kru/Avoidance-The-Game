@@ -25,10 +25,10 @@
             </div>
             <div class="score__container">
                 <div class="score__header">
-                  <h1>Your Score: <div style="color:black; display: inline;">700</div></h1>
+                  <h1>Your Score: <div id="final_total" style="color:black; display: inline;"></div></h1>
                 </div>
-                <div class="score__social">300 social points</div>
-                <div class="score__health">400 health points</div>
+                <div class="score__social" id="final_social"></div>
+                <div class="score__health" id="final_health"></div>
             </div>
             <div class = 'table-responsive'>
                 <h1>Leaderboard</h1>
@@ -56,6 +56,7 @@
 
     <script>
       $(document).ready(populateLeaderboard());
+      $(document).ready(showFinalScore());
     </script>
 
 </body>
