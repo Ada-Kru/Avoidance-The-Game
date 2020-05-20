@@ -1,7 +1,7 @@
-const express = require('express')
+const express = require('express');
 const mountRoutes = require('./routes');
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const path = require('path');
+const PORT = process.env.PORT || 5000;
 
 const app = express()
   .use('/', express.static(path.join(__dirname, '/public')))
@@ -11,10 +11,10 @@ const app = express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'html')
   .get('/', (req, res) => res.render('pages/landing_page'))
-  .get('/index',(req,res) => res.render('pages/index'))
-  .get('/end_page',(req,res) => res.render('pages/end_page'))
-
+  .get('/index', (req, res) => res.render('pages/index'))
+  .get('/end_page', (req, res) => res.render('pages/end_page'))
+  .get('/landing_page', (req, res) => res.render('pages/landing_page'));
 
 mountRoutes(app);
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
