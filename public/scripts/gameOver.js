@@ -22,7 +22,7 @@ async function populateLeaderboard() {
       nameCell.innerHTML = user.name;
       scoreCell.innerHTML = user.total_score;
     });
-    if (json.length < 10) {
+    if (json.length - 1 < 10) {
       updateLeaderboard = true;
     } else {
       json.forEach(function (user) {
