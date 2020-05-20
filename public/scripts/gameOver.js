@@ -26,3 +26,16 @@ async function populateLeaderboard() {
     alert("HTTP-Error: " + response.status);
   }
 }
+
+async function showFinalScore(){
+  let totalScore_div = document.getElementById("final_total");
+  let socialScore_div = document.getElementById("final_social");
+  let healthScore_div = document.getElementById("final_health");
+  let socialScore = localStorage.getItem("socialScore");
+  let healthScore = localStorage.getItem("healthScore");
+  let totalScore = localStorage.getItem("totalScore");
+
+  totalScore_div.innerHTML = totalScore;
+  socialScore_div.innerHTML = socialScore + " social points";
+  healthScore_div.innerHTML = healthScore + " health points";
+}
