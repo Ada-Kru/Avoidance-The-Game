@@ -1,105 +1,70 @@
-/* main containers */
+/* containers */
 body, html{
-  /* min-height: 100%; */
   margin: 0;
-  /* height: 100%; */
 }
 .main{
-  /* background-color: #001a00; */
   background-image: url("../images/double-bubble-dark.png");
   background-repeat: repeat;
   min-height: 100vh;
-  /* height: 100%; */
+}
+
+#lp_container > div, #lp_container > form, .container > div {
+  background-color: #ffbb80;
+  text-align: center;
 }
 
 #lp_container {
-    max-width: 720px;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    height: 100%;
+  max-width: 720px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  height: 100%;
 }
 
-#lp_container > div {
-    background-color: #ffbb80;
-    text-align: center;
-    padding: 10px;
-    font-size: 20px;
-    border: 1px solid black;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 20px 0px;
-    position: relative;
-    top: 20px;
-}
-
-
-#lp_container > div:nth-child(1) {
-    height: 10%;
-    margin: 0px;
-    position: relative;
-    top: 20px;
-}
-
-#lp_container > div:nth-child(2) {
-    height: 20%;
-    position: relative;
-    top: 20px;
+#lp_container > div, #lp_container > form {
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid black;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 20px 0px;
+  position: relative;
+  top: 20px;
 }
 
 #lp_container > form {
-    background-color: #ffbb80;
-    text-align: center;
-    padding: 10px;
-    font-size: 20px;
-    border: 1px solid black;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 20px 0px;
-    position: relative;
-    top: 20px;
-    height: 50%;
+  height: 50%;
 }
 
-.title__div > h1 {
-    font-size: 50px;
-    text-align: center;
-    font-family: 'Girassol', cursive;
-    float: none;
+#lp_container > div:nth-child(1) {
+  height: 10%;
+  margin: 0px;
+}
+
+#lp_container > div:nth-child(2) {
+  height: 20%;
 }
 
 #username{
   width: 50%;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#play_again_form > button {
-  background-color: #e66b00;
-  font-size: 16px;
-  text-align: left;
-}
-
-#lp_form > button {
-  background-color: #e66b00;
-  font-size: 16px;
-  text-align: left;
+  margin: 0 auto;
 }
 
 #lp_form > div {
   margin-bottom: 2rem;
 }
 
-#nurse-pts, #teacher-pts, #librarian-pts{
-  font-size: 70%;
-}
 
-
+/* grids */
 .container {
   display: grid;
+  grid-gap: 4px;
+  justify-items: center;
+  min-height: inherit;
+}
+
+.container__main {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 60px 250px auto 100px;
   grid-template-areas: 
@@ -108,26 +73,26 @@ body, html{
       "image image choices"
       "health social choices"
   ;
-  grid-gap: 4px;
-  /* background-color: #001a00; */
-  justify-items: center; /*or stretch to fill the area
-  /* justify-content: center;  */
   height: 100%;
-  min-height: inherit;
 }
 
-/* grids */
+.container__score {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: 
+    "header header"
+    "social health";
+    height: 80%;
+  }
+
 .container > div {
-  background-color: #F9D8A3;
-  text-align: center;
   padding: 15px;
   font-size: 20px;
-  /* border: 1px solid black; */
   width: 100%;
   box-sizing: border-box;
 }
 
-.grid__header {
+.grid__header, .score__header {
   grid-area: header;
 }
 .grid__menu {
@@ -139,10 +104,10 @@ body, html{
 .grid__leaderBoard {
   grid-area: leaderBoard;
 }
-.grid__social {
+.grid__social, .score__social {
   grid-area: social;
 }
-.grid__health {
+.grid__health, .score__health {
   grid-area: health;
 }
 .grid__image {
@@ -155,27 +120,20 @@ body, html{
   grid-area: choices;
 }
 
-/* .grid__data { */
-  /* width: 100%; */
-  /* height: 100%; */
-  /* background-color: #c97b36; */
-/* } */
-
 
 /* images */
 #image__main{
   display: flex;
   height: 100%;
-  /* background-color: blue; */
 }
 
 img{
   object-fit: contain;
   width: 100%;
-  /* max-width: 100%; */
 }
 
-/* bars and buttons */
+
+/* bars */
 .progress {
   margin: 10px 0px;
   clear: both;
@@ -190,8 +148,13 @@ img{
 }
 .progress-bar--danger{
   background-color: #F65454;
+  animation-name: flash .3s 4;
   -webkit-animation-name: flash .3s 4;
-  animation: flash .3s 4;
+}
+
+@keyframes flash {
+  from { background-color: #F65454; }
+  to { background-color: #8a0f1e; }
 }
 
 @-webkit-keyframes flash {
@@ -200,6 +163,7 @@ img{
 }
 
 
+/* buttons */
 .grid__choices > .btn__choice, .grid__choices > .btn__next, .grid__description > .btn__play{
   background-color: #82D7CF;
   font-size: 16px;
@@ -210,33 +174,33 @@ img{
   text-align: left;
 }
 
-.grid__choices > .btn__next, .grid__description > .btn__play{
+.grid__choices > .btn__next, .grid__description > .btn__play, .title__div > h1{
   text-align: center;
 }
+
 
 /* fonts */
 h1{
   font-size: 50px;
-  text-align: left;
   font-family: 'Girassol', cursive;
-  float: left;
   color: #8a0f1e;
   text-shadow: 1px 1px #f00;
 }
 
-.grid__description > p{
+.grid__description > p, #play_again_form > button, #lp_form > button{
   font-size: 16px;
   text-align: left;
 }
 
+#play_again_form > button, #lp_form > button{
+  background-color: #e66b00;
+}
+
 .fas {
-  /* color: #25746c; */
   color: #82D7CF;
   font-size: 30px;
 }
-.icon__home{
-  float: right;
-}
+
 .font--right{
   float: right;
 }
@@ -244,41 +208,6 @@ h1{
   float: left;
 }
 
-
-.score__container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  grid-template-areas: 
-    "header header"
-    "social health";
-  grid-gap: 4px;
-  /* background-color: #001a00; */
-  justify-items: center; /*or stretch to fill the area
-  /* justify-content: center;  */
-  height: 80%;
-  min-height: inherit;
-}
-
-
-.score__container > div {
-  /* background-color: #F9D8A3; */
-  text-align: center;
-  padding: 15px;
-  font-size: 20px;
-  /* border: 1px solid black; */
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.score__header {
-  grid-area: header;
-}
-
-.score__social{
-  grid-area: social;
-}
-
-.score__health{
-  grid-area: health;
+#nurse-pts, #teacher-pts, #librarian-pts{
+  font-size: 70%;
 }
