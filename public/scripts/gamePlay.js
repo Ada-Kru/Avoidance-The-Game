@@ -163,7 +163,7 @@ async function gameEnded() {
       name: name,
       healthScore: health * 10,
       socialScore: social * 10,
-      totalScore: (health + social),
+      totalScore: (health + social) * 10,
       characterType: occupation,
     };
 
