@@ -150,12 +150,20 @@ function updateStatusBars(health, social) {
 
 async function gameEnded() {
   // Try to save the user's scores on the database.
+  if (health == 0) {
+    window.location.href = "/end_page";
+  }
+
+  if (social == 0) {
+    window.location.href = "/end_page";
+  }
+
   try {
     let data = {
       name: name,
       healthScore: health * 10,
       socialScore: social * 10,
-      totalScore: (health + social) * 10,
+      totalScore: (health + social),
       characterType: occupation,
     };
 
