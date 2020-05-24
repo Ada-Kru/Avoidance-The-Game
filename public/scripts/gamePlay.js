@@ -12,18 +12,19 @@ if (name == null || occupation == null) {
 }
 
 //Initialize health and social depending on occupation
+//update health so every occupation starts with the same health
 if (occupation === "0") {
-  health = 50;
+  health = 60;
   social = 80;
 } else if (occupation === "1") {
-  health = 50;
-  social = 50;
+  health = 70;
+  social = 70;
 } else if (occupation === "2") {
   health = 80;
-  social = 50;
+  social = 60;
 } else {
-  health = 50;
-  social = 50;
+  health = 70;
+  social = 70;
 }
 
 updateStatusBars(health, social);
