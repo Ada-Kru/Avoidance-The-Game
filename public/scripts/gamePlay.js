@@ -97,7 +97,7 @@ function playGame(level, health, social, sublevel) {
   if (health > 0 && social > 0 && level <= 4) {
     // if start of level, show desc only with no choices
     if (sublevel == -1) {
-      $("#main_img").attr("src", `images/${levels.images[level][0][0]}`);
+      $("#main_img").attr("src", `images/${levels.images[level][0]}`);
       $("#description").text(levels.descriptions[level][0]);
       $("#play").show();
     }
@@ -105,7 +105,7 @@ function playGame(level, health, social, sublevel) {
     // if on sublevel, show desc and choices
     else {
       $(".btn__choice").show();
-      $("#main_img").attr("src", `images/${levels.images[level][sublevel][0]}`);
+      $("#main_img").attr("src", `images/${levels.images[level][sublevel + 1]}`);
       $("#description").text(levels.descriptions[level][sublevel + 1]);
       $("#choice1").text(levels.choices[level][sublevel][0]);
       $("#choice2").text(levels.choices[level][sublevel][1]);

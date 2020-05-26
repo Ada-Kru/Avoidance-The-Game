@@ -45,6 +45,10 @@ body, html{
   height: 20%;
 }
 
+.container__lp-description {
+  display: flex;
+}
+
 #username{
   width: 50%;
   text-align: center;
@@ -125,6 +129,10 @@ body, html{
 #image__main{
   display: flex;
   height: 100%;
+}
+#img__landing {
+  max-width: 350px;
+  /* float: left; */
 }
 
 img{
@@ -210,4 +218,8 @@ h1{
 
 #nurse-pts, #teacher-pts, #librarian-pts{
   font-size: 70%;
+}
+.container__lp-description > p {
+  margin: auto;
+  padding: 0 20px;
 }
