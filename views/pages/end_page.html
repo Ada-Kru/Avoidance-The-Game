@@ -1,55 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>End Page</title>
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-
     <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Girassol&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- stylesheets -->
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-</head>
-<body>
-    <div class = main>
-        <div id="lp_container">
-            <div class="title__div">
-                <h1>Game Over</h1>
-            </div>
-            <div class="score__container">
-                <div class="score__header">
-                  <h1>Your Score: <div id="final_total" style="color:black; display: inline;"></div></h1>
-                </div>
-                <div class="score__social" id="final_social"></div>
-                <div class="score__health" id="final_health"></div>
-            </div>
-            <div class = 'table-responsive'>
-                <h1>Leaderboard</h1>
-                <table class="table table-dark" id="leaderboard_table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Ranking</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Points</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                  </table>
-            </div>
-                <form id = 'play_again_form' action = 'landing_page.html' method = 'GET'>
-                    <button type="submit" class="btn">Play Again</button>
-                </form>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div id="lp_container">
+        <div class="title__div">
+          <h1>Game Over</h1>
         </div>
+        <div class="container container__score">
+          <div class="score__header">
+            <h1>
+              Your Score:
+              <div
+                id="final_total"
+                style="color: black; display: inline;"
+              ></div>
+            </h1>
+          </div>
+          <div class="score__social" id="final_social"></div>
+          <div class="score__health" id="final_health"></div>
+        </div>
+        <div class="table-responsive">
+          <h1>Leaderboard</h1>
+          <table class="table table-dark" id="leaderboard_table">
+            <thead>
+              <tr>
+                <th scope="col">Ranking</th>
+                <th scope="col">Username</th>
+                <th scope="col">Points</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <form id="play_again_form" action="/" method="GET">
+          <button type="submit" class="btn">Play Again</button>
+        </form>
+      </div>
     </div>
+
+    <!-- Thanks to these sites for the use of their images: toastmasters.com, unsplash.com, newschoolfreepress.com, clker.com, -->
 
     <div id="test"></div>
     <script type="application/javascript" src="/scripts/gameOver.js"></script>
@@ -58,6 +69,5 @@
       $(document).ready(populateLeaderboard());
       $(document).ready(showFinalScore());
     </script>
-
-</body>
+  </body>
 </html>

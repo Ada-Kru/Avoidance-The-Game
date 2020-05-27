@@ -12,18 +12,19 @@ if (name == null || occupation == null) {
 }
 
 //Initialize health and social depending on occupation
+//update health so every occupation starts with the same health
 if (occupation === "0") {
-  health = 50;
+  health = 60;
   social = 80;
 } else if (occupation === "1") {
-  health = 50;
-  social = 50;
+  health = 70;
+  social = 70;
 } else if (occupation === "2") {
   health = 80;
-  social = 50;
+  social = 60;
 } else {
-  health = 50;
-  social = 50;
+  health = 70;
+  social = 70;
 }
 
 updateStatusBars(health, social);
@@ -96,7 +97,7 @@ function playGame(level, health, social, sublevel) {
   if (health > 0 && social > 0 && level <= 4) {
     // if start of level, show desc only with no choices
     if (sublevel == -1) {
-      $("#main_img").attr("src", `images/${levels.images[level][0][0]}`);
+      $("#main_img").attr("src", `images/${levels.images[level][0]}`);
       $("#description").text(levels.descriptions[level][0]);
       $("#play").show();
     }
@@ -104,7 +105,7 @@ function playGame(level, health, social, sublevel) {
     // if on sublevel, show desc and choices
     else {
       $(".btn__choice").show();
-      $("#main_img").attr("src", `images/${levels.images[level][sublevel][0]}`);
+      $("#main_img").attr("src", `images/${levels.images[level][sublevel + 1]}`);
       $("#description").text(levels.descriptions[level][sublevel + 1]);
       $("#choice1").text(levels.choices[level][sublevel][0]);
       $("#choice2").text(levels.choices[level][sublevel][1]);
@@ -149,6 +150,14 @@ function updateStatusBars(health, social) {
 
 async function gameEnded() {
   // Try to save the user's scores on the database.
+  if (health == 0) {
+    window.location.href = "/end_page";
+  }
+
+  if (social == 0) {
+    window.location.href = "/end_page";
+  }
+
   try {
     let data = {
       name: name,

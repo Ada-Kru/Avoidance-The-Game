@@ -1,24 +1,29 @@
 const levels = {
   images: [
     [
-      ["level1-1-background1.jpg", "placeholder", "placeholder"],
-      ["level1-2-background1.jpg", "placeholder", "placeholder"],
+      "level1-0-background1.jpg",
+      "level1-1-background1.jpg",
+      "level1-2-background1.jpg",
     ],
     [
-      ["level2-1-background1.jpg", "placeholder", "placeholder"],
-      ["level2-2-background1.jpg", "placeholder", "placeholder"],
+      "level2-0-background1.jpg",
+      "level2-1-background1.jpg",
+      "level2-2-background1.jpg",
     ],
     [
-      ["level3-1-background1.jpg", "placeholder", "placeholder"],
-      ["level3-2-background1.jpg", "placeholder", "placeholder"],
+      "level3-0-background1.jpg",
+      "level3-1-background1.jpg",
+      "level3-2-background1.jpg",
     ],
     [
-      ["level4-1-background1.jpg", "placeholder", "placeholder"],
-      ["level4-2-background1.jpg", "placeholder", "placeholder"],
+      "level4-0-background1.jpg",
+      "level4-1-background1.jpg",
+      "level4-2-background1.jpg",
     ],
     [
-      ["level5-1-background11.jpg", "placeholder", "placeholder"],
-      ["level5-2-background1.jpg", "placeholder", "placeholder"],
+      "level5-0-background1.jpg",
+      "level5-1-background1.jpg",
+      "level5-2-background1.jpg",
     ],
   ],
 
@@ -41,7 +46,7 @@ const levels = {
     [
       "After work you decide to jog through the park to exercise and clear your head.", 
       "There are a ton of people at the park!  A particularly large group of people are walking in your direction taking up the entire path.", 
-      "You run into your boss, also exercising in the park, who mentions an upcoming work retreat.  He says the bus is booked and laughs about \"social distancing\" on a bus.  And you'll be coming, right? He implies consequences if you do not."
+      "You run into your other boss, also exercising in the park, who mentions an upcoming work retreat.  He says the bus is booked and laughs about \"social distancing\" on a bus.  And you'll be coming, right? He implies consequences if you do not."
     ],
     [
       "What a day! Thankfully, it's almost at an end. You've managed to avoid the pandemic so far...", 
@@ -172,58 +177,59 @@ const levels = {
   ],
   points: [
     [
+    // social, health points 
       [
-        [-30, 20],
-        [15, 10],
-        [30, -30],
+        [-15, 15],
+        [0, 10],
+        [20, -20],
       ],
       [
-        [5, -15],
-        [-25, -5],
-        [0, -15],
+        [10, -10],
+        [-15, 15],
+        [0, -5],
       ],
     ],[
       [
-        [-5, -5],
-        [20, -30],
-        [-50, 0],
+        [10, 10],
+        [15, -15],
+        [-20, 10],
       ],
       [
-        [0, 20],
-        [-20, 10],
-        [25, -35],
+        [-10, 15],
+        [-15, 10],
+        [20, -20],
       ],
     ], [
       [
-        [30, -30],
-        [-15, 15],
-        [0, -20],
+        [10, -20],
+        [-15, 10],
+        [-15, -15],
+      ],
+      [
+        [-15, -15],
+        [20, -10],
+        [-20, 10],
+      ],
+    ], [
+      [
+        [-5, 15],
+        [-15, 10],
+        [5, -15],
+      ],
+      [
+        [10, -15],
+        [-15, 10],
+        [-15, 10],
+      ],
+    ], [
+      [
+        [10, -15],
+        [20, 10],
+        [-10, -10],
       ],
       [
         [-15, -25],
-        [20, 5],
-        [-15, 5],
-      ],
-    ], [
-      [
-        [-40, -30],
-        [-10, 30],
-        [5, -10],
-      ],
-      [
-        [20, -30],
-        [-30, 0],
-        [-1, 0],
-      ],
-    ], [
-      [
-        [0, -20],
-        [25, 5],
-        [0, -1],
-      ],
-      [
-        [-35, -75],
-        [-50, -75],
+        [-15, -30],
         [25, 15],
       ],
     ]

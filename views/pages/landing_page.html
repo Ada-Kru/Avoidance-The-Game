@@ -1,80 +1,111 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Avoidance - The Game</title>
 
     <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Girassol&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- stylesheets -->
-    <link rel="stylesheet" type="text/css" href="styles/reset.css">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
-<div class="main">
-    <div id="lp_container">
+    <link rel="stylesheet" type="text/css" href="styles/reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div id="lp_container">
         <div class="title__div">
-            <h1>Avoidance: The Game</h1>
+          <h1>Avoidance: The Game</h1>
         </div>
+<<<<<<< HEAD
         <div class="description_div">
             A game where you attempt to go about your daily life while avoiding contact with other people.
+=======
+        <div class="container__lp-description">
+          <img id="img__landing" src="images/avoid.jpg" alt="woman holding hand up to shield face">
+          <p>There’s a global pandemic, but your city hasn’t shut down yet. How well can you navigate your day while avoiding those around you?</p>
+>>>>>>> d2f37d260021c267b4db1300e26fa081a4ece90f
         </div>
 
-
         <form id="lp_form" action="/index" method="GET">
-            <div class="form-group" id="lp_form_username">
-                <label for="username">Choose your username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+          <div class="form-group" id="lp_form_username">
+            <label for="username">Choose your username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Enter username"
+              name="username"
+            />
+          </div>
+          <p>Choose your occupation</p>
+          <div class="form-check">
+            <div class="row">
+              <div class="col">
+                <label for="nurse-opt" class="form-check-label">
+                  <input
+                    type="radio"
+                    id="nurse-opt"
+                    class="form-check-input"
+                    value="nurse"
+                    name="occupations"
+                    checked
+                  />Nurse
+                </label>
+                <ul id="nurse-pts">
+                  <li>60 health points</li>
+                  <li>80 social points</li>
+                </ul>
+              </div>
+              <div class="col">
+                <label for="teacher-opt" class="form-check-label">
+                  <input
+                    type="radio"
+                    id="teacher-opt"
+                    class="form-check-input"
+                    value="teacher"
+                    name="occupations"
+                  />Teacher
+                </label>
+                <ul id="teacher-pts">
+                  <li>70 health points</li>
+                  <li>70 social points</li>
+                </ul>
+              </div>
+              <div class="col">
+                <label for="librarian-opt" class="form-check-label">
+                  <input
+                    type="radio"
+                    id="librarian-opt"
+                    class="form-check-input"
+                    value="librarian"
+                    name="occupations"
+                  />Librarian
+                </label>
+                <ul id="librarian-pts">
+                  <li>80 health points</li>
+                  <li>60 social points</li>
+                </ul>
+              </div>
             </div>
-            <p>Choose your occupation</p>
-            <div class="form-check">
-                <div class="row">
-                    <div class="col">
-                        <label for="nurse-opt" class="form-check-label">
-                            <input type="radio" id="nurse-opt" class="form-check-input" value="nurse" name="occupations"
-                                checked>Nurse
-                        </label>
-                        <ul id="nurse-pts">
-                            <li>50 health points</li>
-                            <li>80 social points</li>
-                        </ul>
-
-                    </div>
-                    <div class="col">
-                        <label for="teacher-opt" class="form-check-label">
-                            <input type="radio" id="teacher-opt" class="form-check-input" value="teacher"
-                                name="occupations">Teacher
-                        </label>
-                        <ul id="teacher-pts">
-                            <li>50 health points</li>
-                            <li>50 social points</li>
-                        </ul>
-                    </div>
-                    <div class="col">
-                        <label for="librarian-opt" class="form-check-label">
-                            <input type="radio" id="librarian-opt" class="form-check-input" value="librarian"
-                                name="occupations">Librarian
-                        </label>
-                        <ul id="librarian-pts">
-                            <li>80 health points</li>
-                            <li>50 social points</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn">Play</button>
+          </div>
+          <button type="submit" class="btn">Play</button>
         </form>
-
-
+      </div>
     </div>
 
-</div>
-
-<script type="application/javascript" src="/scripts/getJobPoints.js"></script>
-</body>
-
+    <script
+      type="application/javascript"
+      src="/scripts/getJobPoints.js"
+    ></script>
+  </body>
 </html>
