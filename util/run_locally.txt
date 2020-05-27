@@ -33,6 +33,7 @@
 
 * Run '\connect Avoidance' to connect to the database.
 
+
 * Run the following command (you should just be able to copy and paste it.)
 
 CREATE TABLE scores(
@@ -52,7 +53,7 @@ CREATE TABLE scores(
 * In order for the node server to connect to the database, environment variables must be set on your system.
   Setting environment variables is different on different operating systems so look up a guide on how to do this.
   On Windows there is a 'pg_env.bat' in the installation directory for Postgres.  You can copy this to another
-  directory, modify it if needed, and run it before you start the node server (you must run it from the same command line.)
+  directory, modify it as needed, and run it before you start the node server (you must run the node server from the same command terminal that you set the environment variables in.)
   The following variables need to be set (the password and port might be different depending on your choices during installation):
 
 PGHOST=localhost
@@ -63,7 +64,7 @@ PGPORT=5432
 DATABASE_URL=postgres://localhost/Avoidance
 
 
-* Once you have the database set up and the server running you should be able to navigate to
+* Once you have the database set up and the server is running you should be able to navigate to
   http://localhost:5000/scores/topscores
-  If the database is running correctly this should show a list of the top ten user's
-  scores (which will be blank at this point as no scores are recorded)
+  If the database is running correctly this would usually show a JSON list of the top ten
+  scores (it will be blank at this point as no scores have been recorded.)
