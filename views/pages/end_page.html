@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Girassol&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="styles/reset.css" />
@@ -54,18 +55,23 @@
             <tbody></tbody>
           </table>
         </div>
-          <div class = "card=body">
-            <h1>Meet the authors and learn more about COVID-19</h1>
-            <form id="play_again_form" class = "card-body" action="/author_page" method="GET">
-              <button type = "submit" class = "btn">Meet The Authors</button>
-              <a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html" class="btn" target="_blank">CDC Recommendations</a>
-              <a href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" class="btn" target="_blank">Global Cases</a>
-            </form>
-            <h1>Are you ready to play again?</h1>
-            <form id="play_again_form" class = "card-body" action="/" method="GET">
-              <button type="submit" class="btn">Play Again</button>
-            </form>
-         </div>
+        <div >
+          <h1>More</h1>
+          <div class="ep--btns">
+            <button id="button2" type = "submit" class = "btn"><i class="fas fa-users"></i> Meet The Authors</button>
+            <a id="button4" href="https://www.cdc.gov/coronavirus/2019-ncov/index.html" class="btn" target="_blank"><i class="fas fa-briefcase-medical"></i> CDC COVID Recommendations</a>
+            <a id="button3"  href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" class="btn" target="_blank"><i class="fas fa-globe-americas"></i> COVID-19 Global Cases</a>
+            <button id="button1" type="submit" class="btn"><i class="fas fa-redo"></i> Play Again</button>            
+          </div>
+
+
+          <!-- <form id="play_again_form" class = "card-body" action="/author_page" method="GET"> -->
+
+          <!-- </form> -->
+          <!-- <h1>Play again?</h1> -->
+          <!-- <form id="play_again_form" class = "card-body" action="/" method="GET"> -->
+          <!-- </form> -->
+        </div>
       </div>
     </div>
 
