@@ -67,7 +67,7 @@ body, html{
 }
 
 .card__auth {
-  max-width: 250px;
+  max-width: 150px;
   background-attachment: #FFF9ED;
   margin: 5px 0;
 }
@@ -276,5 +276,5 @@ h1{
 }
 .card-title {
   margin: .5rem auto;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
