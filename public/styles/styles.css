@@ -16,7 +16,6 @@ body, html{
 
 #lp_container {
   width: 100%;
-  /* padding: 0 15px; */
   margin: 0 auto;
   height: 100%;
 }
@@ -35,9 +34,6 @@ body, html{
   border: 1px solid black;
   width: 100%;
   box-sizing: border-box;
-  /* margin: 20px 0px; */
-  /* position: relative; */
-  /* top: 20px; */
 }
 
 #lp_container > div, #lp_container > form {
@@ -50,7 +46,6 @@ body, html{
 
 #lp_container > div:nth-child(1) {
   height: 10%;
-  /* margin: 0px; */
 }
 
 #lp_container > div:nth-child(2) {
@@ -77,29 +72,27 @@ body, html{
   margin: 5px 0;
 }
 
-/* .title__div {
-
-} */
-
 
 /* grids */
 .container {
   display: grid;
   grid-gap: 4px;
   justify-items: center;
-  /* min-height: inherit; */
 }
 
 .container__main {
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 60px 270px minmax(100px, 250px) 100px;
+  grid-template-rows: 60px 250px minmax(100px, 195px) 100px;
   grid-template-areas: 
       "header header header"
       "image image description"
       "image image choices"
       "health social choices"
   ;
-  /* height: 90%; */
+}
+
+.container__main > div {
+  padding: 10px;
 }
 
 .container__score {
@@ -118,7 +111,6 @@ body, html{
 }
 
 .container > div {
-  padding: 15px;
   font-size: 20px;
   width: 100%;
   box-sizing: border-box;
@@ -152,6 +144,29 @@ body, html{
   grid-area: choices;
 }
 
+.ep--btns {
+  display: grid;
+  grid-gap: 10px;
+  justify-items: center;
+  grid-template-columns: auto auto;
+  grid-template-areas: 
+    "button1 button2"
+    "button3 button4"
+  ;
+}
+#button1 {
+  grid-area: button1;
+}
+#button2 {
+  grid-area: button2;
+}
+#button3 {
+  grid-area: button3;
+}
+#button4 {
+  grid-area: button4;
+}
+
 
 /* images */
 #image__main{
@@ -160,7 +175,6 @@ body, html{
 }
 #img__landing {
   max-width: 350px;
-  /* float: left; */
 }
 img{
   object-fit: contain;
@@ -170,7 +184,6 @@ img{
 .card-img-top {
   max-height: 200px;
 }
-
 
 
 /* bars */
@@ -232,7 +245,7 @@ h1{
   text-align: left;
 }
 
-#play_again_form > button, #lp_form > button, .card-body > .btn {
+#play_again_form > button, #lp_form > button, .card-body > .btn, .ep--btns > .btn {
   background-color: #e66b00;
   box-shadow: 0 3px 0 0 #994700;
 
@@ -241,6 +254,10 @@ h1{
 .fas {
   color: #82D7CF;
   font-size: 30px;
+}
+#button1 >.fas, #button2 > .fas, #button3 > .fas, #button4 > .fas {
+  color: black;
+  font-size: initial;
 }
 
 .font--right{
@@ -261,4 +278,3 @@ h1{
   margin: .5rem auto;
   font-size: 1.5rem;
 }
-
