@@ -7,28 +7,4 @@ Main Features
     • Players can have their name saved to a leaderboard.
     • Dual health and social status bars with feedback when health is lost or gained.
 
-For more documentation see the file in the documentation folder.
-## File Hierarchy 
-
-#### Procfile
-
-#### index.js
-
-#### package.json
-
-#### views
-  -pages
-    index.ejs - 
-
-#### node\_modules
-
-#### public
-  -images
-  -scripts
-  -styles
-
-#### app.js
-
-#### package-lock.json
-
-#### test.js
+For more documentation see the file in the documentation folder: https://github.com/Ada-Kru/Avoidance-The-Game/tree/master/Documentation.
