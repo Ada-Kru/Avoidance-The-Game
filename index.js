@@ -13,7 +13,9 @@ const app = express()
   .get('/', (req, res) => res.render('pages/landing_page'))
   .get('/index', (req, res) => res.render('pages/index'))
   .get('/end_page', (req, res) => res.render('pages/end_page'))
-  .get('/landing_page', (req, res) => res.render('pages/landing_page'));
+  .get('/author_page', (req, res) => res.render('pages/author_page'))
+  .get('/landing_page', (req, res) => res.render('pages/landing_page'))
+  .get('/author_page', (req, res) => res.render('pages/author_page'));
 
 mountRoutes(app);
 

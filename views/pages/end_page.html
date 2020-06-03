@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Girassol&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="styles/reset.css" />
@@ -24,7 +25,7 @@
   </head>
   <body>
     <div class="main">
-      <div id="lp_container">
+      <div id="lp_container" class="container__lp">
         <div class="title__div">
           <h1>Game Over</h1>
         </div>
@@ -54,9 +55,23 @@
             <tbody></tbody>
           </table>
         </div>
-        <form id="play_again_form" action="/" method="GET">
-          <button type="submit" class="btn">Play Again</button>
-        </form>
+        <div >
+          <h1>More</h1>
+          <div class="ep--btns">
+            <a button id="button2" href="author_page" type = "submit" class = "btn"><i class="fas fa-users"></i> Meet The Authors</button>
+            <a id="button4" href="https://www.cdc.gov/coronavirus/2019-ncov/index.html" class="btn" target="_blank"><i class="fas fa-briefcase-medical"></i> CDC COVID Recommendations</a>
+            <a id="button3"  href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" class="btn" target="_blank"><i class="fas fa-globe-americas"></i> COVID-19 Global Cases</a>
+            <button id="button1" type="submit" class="btn"><i class="fas fa-redo"></i> Play Again</button>            
+          </div>
+
+
+          <!-- <form id="play_again_form" class = "card-body" action="/author_page" method="GET"> -->
+
+          <!-- </form> -->
+          <!-- <h1>Play again?</h1> -->
+          <!-- <form id="play_again_form" class = "card-body" action="/" method="GET"> -->
+          <!-- </form> -->
+        </div>
       </div>
     </div>
 
