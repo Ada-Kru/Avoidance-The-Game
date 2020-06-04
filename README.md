@@ -1,6 +1,6 @@
 # Avoidance-The-Game
 Avoidance: The Game is a decision making game in which the player tries to go about their daily life while avoiding contact with other people during a global pandemic while maintaining their physical and social health.
-Main Features
+## Main Features
 - Playable over the internet with no installation required.
 - Multiple levels to play through.
 - Play as a Nurse, Teacher, or Librarian each with different starting health stats.
