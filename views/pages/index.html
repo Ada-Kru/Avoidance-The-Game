@@ -1,64 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Avoidance - the Game</title>
 
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <title>Avoidance - the Game</title>
 
-    <!-- stylesheets -->
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  </head>
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 
-  <body>
-    <div class="main">
-      <div class="container container__main">
-        <div class="grid__header">
-          <h1 class="font--left">Avoidance: The Game</h1>
-          <a class="font--right" href="/"><span class="fa fas fa-sign-out"></span></a>
-        </div>
+  <!-- stylesheets -->
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
 
-        <div class="grid__social">
-          <p class="font--left">Social points</p>
-          <p id="social_points" class="font--right">25 / 100</p>
-          <div id="progress__social" class="progress">
-            <div id="progress-bar__social" class="progress-bar--normal" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
+<body>
+  <div class="main">
+    <div class="container container__main">
+      <div class="grid__header">
+        <h1 class="font--left">Avoidance: The Game</h1>
+        <a class="font--right" href="/"><span class="fa fas fa-sign-out"></span></a>
+      </div>
 
-        <div class="grid__health">
-          <p class="font--left">Health points</p>
-          <p id="health_points" class="font--right">25 / 100</p>
-          <div id="progress__health" class="progress">
-            <div id="progress-bar__health" class="progress-bar--normal" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-
-        <div class="grid__image">
-          <div id="image__main">
-            <img id="main_img" src="images/level1-0-background1.jpg">
-          </div>
-        </div>
-
-        <div class="grid__description">What's going on?
-          <p id="description">Who’s that? It’s grandma! Hello! she calls out to you.</p>
-        </div>
-        <div class="grid__choices font--left">What do you do?
-          <button id="choice1" type="button" class="btn btn__choice btn-lg btn-block">Turn off on a side street.</button>
-          <button id="choice2" type="button" class="btn btn__choice btn-lg btn-block">Smile, wave and walk faster.</button>
-          <button id="choice3" type="button" class="btn btn__choice btn-lg btn-block">Give her a quick hug, explain (again) what’s going on and how important social distancing is.</button>
+      <div class="grid__social">
+        <p class="font--left">Social points</p>
+        <p id="social_points" class="font--right">25 / 100</p>
+        <div id="progress__social" class="progress">
+          <div id="progress-bar__social" class="progress-bar--normal" role="progressbar" style="width: 25%;"
+            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script type="application/javascript" src="/scripts/storyBoard.js"></script>
-    <script type="application/javascript" src="/scripts/gamePlay.js"></script>
-  </body>
+      <div class="grid__health">
+        <p class="font--left">Health points</p>
+        <p id="health_points" class="font--right">25 / 100</p>
+        <div id="progress__health" class="progress">
+          <div id="progress-bar__health" class="progress-bar--normal" role="progressbar" style="width: 25%;"
+            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+
+      <div class="grid__image">
+        <div id="image__main">
+          <img id="main_img" src="images/level1-0-background1.jpg">
+        </div>
+      </div>
+
+      <div class="grid__description">What's going on?
+        <p id="description">Who’s that? It’s grandma! Hello! she calls out to you.</p>
+      </div>
+      <div class="grid__choices font--left">What do you do?
+        <button id="choice1" type="button" class="btn btn__choice btn-lg btn-block">Turn off on a side street.</button>
+        <button id="choice2" type="button" class="btn btn__choice btn-lg btn-block">Smile, wave and walk
+          faster.</button>
+        <button id="choice3" type="button" class="btn btn__choice btn-lg btn-block">Give her a quick hug, explain
+          (again) what’s going on and how important social distancing is.</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script type="application/javascript" src="/scripts/storyBoard.js"></script>
+  <script type="application/javascript" src="/scripts/gamePlay.js"></script>
+</body>
+
 </html>
 
 

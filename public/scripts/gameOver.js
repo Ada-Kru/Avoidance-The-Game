@@ -22,18 +22,18 @@ async function populateLeaderboard() {
       nameCell.innerHTML = user.name;
       scoreCell.innerHTML = user.total_score;
     });
-    if (json.length < 10) {
-      updateLeaderboard = true;
-    } else if (json.length >= 10) {
-      json.forEach(function (user) {
-        if (totalScore > user.total_score) {
-          updateLeaderboard = true;
-        }
-      });
-    }
-    if (updateLeaderboard === true) {
-      alert('Congrats! You made the top 10. Press "OK" to continue');
-    }
+    // if (json.length < 10) {
+    //   updateLeaderboard = true;
+    // } else if (json.length >= 10) {
+    //   json.forEach(function (user) {
+    //     if (totalScore > user.total_score) {
+    //       updateLeaderboard = true;
+    //     }
+    //   });
+    // }
+    // if (updateLeaderboard === true) {
+    //   alert('Congrats! You made the top 10. Press "OK" to continue');
+    // }
   } else {
     alert("HTTP-Error: " + response.status);
   }
